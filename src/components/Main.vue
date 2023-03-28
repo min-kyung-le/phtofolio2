@@ -75,7 +75,7 @@ const divHeight = {
 const isHeight = reactive(divHeight);
 
 function divSpread(e) {
-  const div = e.target.id;
+  const imgId = e.target.id;
   console.log(div);
   isHeight.first = !isHeight.first;
 }
