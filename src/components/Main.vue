@@ -1,23 +1,29 @@
 <template>
   <div class="container">
     <div class="innerbox" v-for="(one, idx) in setContent">
-      <div class="f-div">
+      <div
+        class="f-div"
+        :class="{ close: one.isSpread2, spread: one.isSpread1 }"
+      >
         <div class="icon-div">
           <span @click="divSpread(idx, 1)"
             ><img id="img1" src="@/assets/plus.png" width="30" height="30"
           /></span>
         </div>
-        <div class="content" :class="{ spread: one.isSpread1 }">
+        <div class="content">
           {{ one.content1 }}
         </div>
       </div>
-      <div class="s-div">
+      <div
+        class="s-div"
+        :class="{ close: one.isSpread1, spread: one.isSpread2 }"
+      >
         <div class="icon-div">
           <span @click="divSpread(idx, 2)"
             ><img id="img1" src="@/assets/plus.png" width="30" height="30"
           /></span>
         </div>
-        <div class="content" :class="{ spread: one.isSpread2 }">
+        <div class="content">
           {{ one.content1 }}
         </div>
       </div>
@@ -40,23 +46,23 @@ const contentList: Array<content> = [
     content1: "Harpers Inc.",
     isSpread1: false,
     content2: "Harpers Inc.",
-    isSpread2: false,
+    isSpread2: true,
   },
   {
     content1: "Harpers Inc.",
-    isSpread1: false,
+    isSpread1: true,
     content2: "Harpers Inc.",
     isSpread2: false,
   },
   {
     content1: "Harpers Inc.",
-    isSpread1: false,
+    isSpread1: true,
     content2: "Harpers Inc.",
     isSpread2: false,
   },
   {
     content1: "Harpers Inc.",
-    isSpread1: false,
+    isSpread1: true,
     content2: "Harpers Inc.",
     isSpread2: false,
   },
@@ -64,7 +70,14 @@ const contentList: Array<content> = [
 const setContent = reactive(contentList);
 
 function divSpread(el: number, num: number) {
-  setContent[el][`isSpread${num}`] = !setContent[el][`isSpread${num}`];
+  if (num > 1) {
+    setContent[el]["isSpread2"] = !setContent[el]["isSpread2"];
+    setContent[el]["isSpread1"] = !setContent[el]["isSpread2"];
+  } else {
+    setContent[el]["isSpread1"] = !setContent[el]["isSpread1"];
+    setContent[el]["isSpread2"] = !setContent[el]["isSpread1"];
+  }
+  console.log(setContent[el]["isSpread1"], setContent[el]["isSpread2"]);
 }
 </script>
 
@@ -72,14 +85,14 @@ function divSpread(el: number, num: number) {
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: 37px;
 }
 
 .innerbox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .innerbox > div {
@@ -118,6 +131,10 @@ function divSpread(el: number, num: number) {
 }
 
 .spread {
-  font-size: 40px !important;
+  height: 400px !important;
+}
+
+.close {
+  height: 198px !important;
 }
 </style>
