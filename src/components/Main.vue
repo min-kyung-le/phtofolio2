@@ -1,63 +1,25 @@
 <template>
   <div class="container">
-    <div class="innerbox">
+    <div class="innerbox" v-for="(one, idx) in setContent">
       <div class="f-div">
         <div class="icon-div">
-          <span @click="divSpread"
+          <span @click="divSpread(idx, 1)"
             ><img id="img1" src="@/assets/plus.png" width="30" height="30"
           /></span>
         </div>
-        <div class="content" :class="{ spread: isHeight.first }">
-          HARPERS INC.
+        <div class="content" :class="{ spread: one.isSpread1 }">
+          {{ one.content1 }}
         </div>
       </div>
       <div class="s-div">
         <div class="icon-div">
-          <img id="img2" src="@/assets/plus.png" width="30" height="30" />
+          <span @click="divSpread(idx, 2)"
+            ><img id="img1" src="@/assets/plus.png" width="30" height="30"
+          /></span>
         </div>
-        <div class="content">TEAM UPDATES</div>
-      </div>
-    </div>
-    <div class="innerbox">
-      <div class="f-div">
-        <div class="icon-div">
-          <img id="img3" src="@/assets/plus.png" width="30" height="30" />
+        <div class="content" :class="{ spread: one.isSpread2 }">
+          {{ one.content1 }}
         </div>
-        <div class="content">EMPLOYEE<br />HANDBOOH</div>
-      </div>
-      <div class="s-div">
-        <div class="icon-div">
-          <img id="img4" src="@/assets/plus.png" width="30" height="30" />
-        </div>
-        <div class="content">ANNUAL<br />REPORT</div>
-      </div>
-    </div>
-    <div class="innerbox">
-      <div class="f-div">
-        <div class="icon-div">
-          <img id="img5" src="@/assets/plus.png" width="30" height="30" />
-        </div>
-        <div class="content">PROJECT<br />REPORTS</div>
-      </div>
-      <div class="s-div">
-        <div class="icon-div">
-          <img id="img6" src="@/assets/plus.png" width="30" height="30" />
-        </div>
-        <div class="content">NEW<br />SERVICES</div>
-      </div>
-    </div>
-    <div class="innerbox">
-      <div class="f-div">
-        <div class="icon-div">
-          <img id="img7" src="@/assets/plus.png" width="30" height="30" />
-        </div>
-        <div class="content">HIRING HUB</div>
-      </div>
-      <div class="s-div">
-        <div class="icon-div">
-          <img id="img8" src="@/assets/plus.png" width="30" height="30" />
-        </div>
-        <div class="content">COMPANY<br />CULTURE</div>
       </div>
     </div>
   </div>
@@ -66,18 +28,43 @@
 <script setup lang="ts">
 import { reactive, onMounted } from "vue";
 
-const divHeight = {
-  first: false,
-  second: false,
-  third: false,
-  fourth: false,
-};
-const isHeight = reactive(divHeight);
+interface content {
+  content1: String;
+  isSpread1: Boolean;
+  content2: String;
+  isSpread2: Boolean;
+}
 
-function divSpread(e) {
-  const imgId = e.target.id;
-  console.log(div);
-  isHeight.first = !isHeight.first;
+const contentList: Array<content> = [
+  {
+    content1: "Harpers Inc.",
+    isSpread1: false,
+    content2: "Harpers Inc.",
+    isSpread2: false,
+  },
+  {
+    content1: "Harpers Inc.",
+    isSpread1: false,
+    content2: "Harpers Inc.",
+    isSpread2: false,
+  },
+  {
+    content1: "Harpers Inc.",
+    isSpread1: false,
+    content2: "Harpers Inc.",
+    isSpread2: false,
+  },
+  {
+    content1: "Harpers Inc.",
+    isSpread1: false,
+    content2: "Harpers Inc.",
+    isSpread2: false,
+  },
+];
+const setContent = reactive(contentList);
+
+function divSpread(el: number, num: number) {
+  setContent[el][`isSpread${num}`] = !setContent[el][`isSpread${num}`];
 }
 </script>
 
