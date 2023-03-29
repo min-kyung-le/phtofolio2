@@ -13,7 +13,7 @@ import Main from "./components/Main.vue";
 import About from "./components/About.vue";
 import Skill1 from "./components/Skill1.vue";
 import Skill2 from "./components/Skill2.vue";
-import Career from "./components/Career1.vue";
+import Career1 from "./components/Career1.vue";
 import HomeLayout from "@/layout/HomeLayout.vue";
 
 export default defineComponent({
