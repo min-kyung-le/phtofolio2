@@ -22,14 +22,10 @@
 <script lang="ts" setup>
 import { defineComponent, onMounted, reactive } from "vue";
 
-onMounted(() => {
-  console.log("mounted");
-});
-
 const imgNum = reactive({
   num: 1,
 });
-function click(number: Number) {
+function click(number: number) {
   if (number > 0) {
     if (imgNum.num < 3) {
       imgNum.num += 1;
