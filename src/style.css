@@ -79,6 +79,7 @@ button:focus-visible {
   }
 }
 
+/* Main - start */
 .page {
   width: 100%;
   height: 100vh;
@@ -101,3 +102,44 @@ button:focus-visible {
   margin-top: 36px;
   margin-left: 40px;
 }
+
+/* Main - end */
+
+/* Skill - start */
+.sub-title-2 {
+  font-size: 17px;
+  margin: 15px 0 13px 0;
+}
+
+.sub-title-2 .icon {
+  margin-top: -2px;
+}
+
+.sub-title-2 .text {
+  margin-left: 9px;
+  font-weight: 600;
+}
+
+.sub-content .text {
+  margin-top: -4px;
+}
+
+.sub-content .graph {
+  margin: -7px 0 0 42px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 55px;
+}
+
+.graph .name {
+  width: 108px;
+}
+
+.graph .number {
+  margin-left: 30px;
+  margin-right: -20px;
+  font-size: 12px;
+}
+/* Skill - end */

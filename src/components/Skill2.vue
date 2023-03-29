@@ -39,49 +39,34 @@ const point_color = "#5e17eb";
 
 const skills: Array<skillobj> = [
   {
-    subTitle: "Language",
-    name: "JavaScript(ES6)",
-    value: 86,
-  },
-  {
-    subTitle: "",
-    name: "TypeScript",
-    value: 72,
-  },
-  {
-    subTitle: "Framwork",
-    name: "Vue.js",
-    value: 88,
-  },
-  {
-    subTitle: "",
-    name: "React.js",
-    value: 62,
-  },
-  {
-    subTitle: "Library",
-    name: "Vuetify",
-    value: 87,
-  },
-  {
-    subTitle: "",
-    name: "Gsap",
+    subTitle: "DB",
+    name: "Oracle",
     value: 65,
   },
   {
     subTitle: "",
-    name: "Bootstrap",
+    name: "MySQL",
+    value: 60,
+  },
+  {
+    subTitle: "Git",
+    name: "Github",
+    value: 72,
+  },
+  {
+    subTitle: "Backend Language",
+    name: "Java",
     value: 70,
   },
   {
-    subTitle: "",
-    name: "jQuery",
-    value: 81,
+    subTitle: "Backend Framwork",
+    name: "Spring",
+    value: 75,
   },
   {
-    subTitle: "Style sheet",
-    name: "CSS",
-    value: 84,
+    subTitle: "",
+    name: "Spring Boot",
+    value: 71,
   },
 ];
 
@@ -142,9 +127,8 @@ function series(obj: any) {
   ];
 }
 </script>
-
 <style scoped>
 .page {
-  background-color: aquamarine;
+  background-color: bisque;
 }
 </style>
