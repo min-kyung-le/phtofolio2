@@ -10,13 +10,13 @@
         <div class="graph">
           <div class="text name">{{ one.name }}</div>
           <div class="text number">{{ one.value }}%</div>
-          <div>
+          <div class="chart-div">
             <apexchart
               width="1000"
               height="56"
               type="bar"
               :options="options"
-              :series="series"
+              :series="series(one)"
             ></apexchart>
           </div>
         </div>
@@ -53,7 +53,7 @@ const skills: Array<skillobj> = [
   {
     subTitle: "",
     name: "React.js",
-    value: 60,
+    value: 62,
   },
   {
     subTitle: "Library",
@@ -73,7 +73,7 @@ const skills: Array<skillobj> = [
   {
     subTitle: "",
     name: "jQuery",
-    value: 80,
+    value: 81,
   },
   {
     subTitle: "Style sheet",
@@ -106,6 +106,7 @@ const options = {
     },
   },
   tooltip: {
+    enabled: true,
     followCursor: true,
     x: {
       show: false,
@@ -128,12 +129,15 @@ const options = {
     },
   },
 };
-const series = [
-  {
-    name: "JavaScript(ES6)",
-    data: [86],
-  },
-];
+
+function series(obj: any) {
+  return [
+    {
+      name: obj.name,
+      data: [obj.value],
+    },
+  ];
+}
 </script>
 <style scoped>
 .page {
@@ -164,7 +168,7 @@ const series = [
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 40px;
+  height: 60px;
 }
 
 .graph .name {
@@ -175,9 +179,5 @@ const series = [
   margin-left: 30px;
   margin-right: -20px;
   font-size: 12px;
-}
-
-.sub-content div {
-  display: inline-block;
 }
 </style>
