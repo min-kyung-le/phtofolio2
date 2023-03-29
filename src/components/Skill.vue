@@ -2,16 +2,17 @@
   <div class="page">
     <div class="page-title">사용 스킬</div>
     <div class="page-detail">
-      <div class="sub-title">
-        <div class="sub-title-2">
+      <div class="sub-content" v-for="(one, idx) in skillsList">
+        <div class="sub-title-2" v-if="one.subTitle !== ''">
           <v-icon class="icon" size="x-small">mdi-rhombus</v-icon
-          ><span class="text">Language</span>
+          ><span class="text">{{ one.subTitle }}</span>
         </div>
-        <div class="sub-content">
-          <div class="text">JavaScript(ES6)</div>
+        <div class="graph">
+          <div class="text name">{{ one.name }}</div>
+          <div class="text number">{{ one.value }}%</div>
           <div>
             <apexchart
-              width="500"
+              width="1000"
               height="56"
               type="bar"
               :options="options"
@@ -24,57 +25,115 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted } from "vue";
+<script lang="ts" setup>
+import { defineComponent, onMounted, reactive } from "vue";
 
-onMounted(() => {});
+interface skillobj {
+  subTitle: String;
+  name: String;
+  value: Number;
+}
 
-export default defineComponent({
-  name: "",
-  setup(props, { emit, attrs, expose, slots }) {
-    return {
-      options: {
-        chart: {
-          id: "vuechart-example",
-          type: "bar",
-          toolbar: { show: false },
-        },
-        xaxis: {
-          show: false,
-          categories: ["JavaScript(ES6)"],
-          labels: { show: false },
-        },
-        yaxis: {
-          show: false,
-        },
-        dataLabels: { enabled: false },
-        plotOptions: {
-          bar: {
-            borderRadius: 1,
-            horizontal: true,
-          },
-        },
-        tooltip: {
-          x: {
-            show: false,
-          },
-          y: {
-            formatter: (val) => {
-              return `${val}%`;
-            },
-          },
-        },
-        color: ["#e1e1e1"],
-      },
-      series: [
-        {
-          name: "JavaScript(ES6)",
-          data: [86],
-        },
-      ],
-    };
+const skills: Array<skillobj> = [
+  {
+    subTitle: "Language",
+    name: "JavaScript(ES6)",
+    value: 86,
   },
-});
+  {
+    subTitle: "",
+    name: "TypeScript",
+    value: 72,
+  },
+  {
+    subTitle: "Framwork",
+    name: "Vue.js",
+    value: 88,
+  },
+  {
+    subTitle: "",
+    name: "React.js",
+    value: 60,
+  },
+  {
+    subTitle: "Library",
+    name: "Vuetify",
+    value: 87,
+  },
+  {
+    subTitle: "",
+    name: "Gsap",
+    value: 65,
+  },
+  {
+    subTitle: "",
+    name: "Bootstrap",
+    value: 70,
+  },
+  {
+    subTitle: "",
+    name: "jQuery",
+    value: 80,
+  },
+  {
+    subTitle: "Style sheet",
+    name: "CSS",
+    value: 84,
+  },
+];
+
+const skillsList = reactive(skills);
+
+const options = {
+  chart: {
+    id: "vuechart-example",
+    type: "bar",
+    toolbar: { show: false },
+  },
+  xaxis: {
+    show: false,
+    categories: ["JavaScript(ES6)"],
+    labels: { show: false },
+  },
+  yaxis: {
+    show: false,
+  },
+  dataLabels: { enabled: false },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+      barHeight: "90%",
+    },
+  },
+  tooltip: {
+    followCursor: true,
+    x: {
+      show: false,
+    },
+    y: {
+      formatter: (val) => {
+        return `${val}%`;
+      },
+    },
+  },
+  fill: {
+    colors: ["#5e17eb"],
+  },
+  grid: {
+    row: {
+      colors: ["#000"],
+    },
+    column: {
+      colors: ["#000"],
+    },
+  },
+};
+const series = [
+  {
+    name: "JavaScript(ES6)",
+    data: [86],
+  },
+];
 </script>
 <style scoped>
 .page {
@@ -83,6 +142,7 @@ export default defineComponent({
 
 .sub-title-2 {
   font-size: 17px;
+  margin: 15px 0 13px 0;
 }
 
 .sub-title-2 .icon {
@@ -91,11 +151,30 @@ export default defineComponent({
 
 .sub-title-2 .text {
   margin-left: 9px;
+  font-weight: 600;
 }
 
-.sub-title .sub-content {
-  margin: 14px 0 0 42px;
+.sub-content .text {
+  margin-top: -4px;
+}
+
+.sub-content .graph {
+  margin: -7px 0 0 42px;
   font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+}
+
+.graph .name {
+  width: 108px;
+}
+
+.graph .number {
+  margin-left: 30px;
+  margin-right: -20px;
+  font-size: 12px;
 }
 
 .sub-content div {
