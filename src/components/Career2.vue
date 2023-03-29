@@ -41,9 +41,14 @@
           </div>
         </div>
         <div class="right end-right">
-          <div>
-            <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
-            >캡쳐 화면
+          <div class="btn-icon-div">
+            <div class="btn-effect">
+              <div>
+                <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
+                >캡쳐 화면
+              </div>
+              <div class="click-line"></div>
+            </div>
             <v-icon class="cursor-icon">mdi-cursor-default-click</v-icon>
           </div>
         </div>
@@ -80,6 +85,25 @@ const point_color = "#5e17eb";
 }
 
 .end-right .cursor-icon {
-  margin-top: 4px;
+  margin-top: 15px;
+  margin-left: -24px;
+}
+
+.click-line {
+  width: 120px;
+  height: 3px;
+  background-color: #000;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.btn-effect {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-icon-div {
+  display: flex;
+  flex-direction: row;
 }
 </style>
