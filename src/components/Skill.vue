@@ -145,6 +145,6 @@ function series(obj: any) {
 
 <style scoped>
 .page {
-  background-color: aquamarine;
+  background-color: bisque;
 }
 </style>

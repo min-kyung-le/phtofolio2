@@ -4,6 +4,7 @@
   <About />
   <Skill />
   <Skill2 />
+  <Career />
 </template>
 
 <script lang="ts">
@@ -12,6 +13,7 @@ import Main from "./components/Main.vue";
 import About from "./components/About.vue";
 import Skill from "./components/Skill.vue";
 import Skill2 from "./components/Skill2.vue";
+import Career from "./components/Career.vue";
 import HomeLayout from "@/layout/HomeLayout.vue";
 
 export default defineComponent({
@@ -23,6 +25,7 @@ export default defineComponent({
     About,
     Skill,
     Skill2,
+    Career,
   },
 
   data() {
