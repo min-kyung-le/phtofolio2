@@ -3,20 +3,21 @@
     <div class="page-title">경력</div>
     <div class="page-detail">
       <div class="career-name">
-        IT 자원관리 시스템 개발<span class="title-small">(약 2년 4개월)</span>
+        IT 자원관리 대시보드 시스템 개발<span class="title-small"
+          >(약 6개월)</span
+        >
       </div>
       <div class="line"></div>
       <div class="date-div">
-        <span>2018.11</span>
-        <span>2021.03</span>
+        <span>2021.04</span>
+        <span>2021.10</span>
       </div>
       <div class="project-div">
         <div class="left">
           <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
           >프로젝트 개요
           <div class="detail">
-            삼성 기흥 캠퍼스 사내의 IT자원(서버, 게이트웨이, VPI 등) 관리를 위한
-            관리자 시스템 개발 및 운영
+            IT 자원관리를 실시간 모니터링하기 위한 사내 업무 시스템
           </div>
         </div>
         <div class="right">
@@ -24,19 +25,26 @@
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
             >기여한 점
             <div class="detail">
-              <p>UI/UX 기능 구현</p>
-              <p>서버로 데이터 송출 시 데이터 검증</p>
-              <p>인터페이스에서의 데이터 비동기 처리</p>
-              <p>개발자 및 사용자 대상 트러블 슈팅 가이드 작성</p>
+              <p>Vue를 통한 UI/UX 기능 구현</p>
+              <p>각 브라우저 호환성을 고려한 인터페이스 개발</p>
+              <p>ApexChart 라이브러리를 활용한 데이터 시각화</p>
+              <p>프론트엔드 개발자를 위한 API 가이드 작성</p>
             </div>
           </div>
           <div>
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
-            >사용툴
+            >사용 툴 (언어, 기술)
             <div class="detail">
-              <p>Javascript, JQuery, CanvasJS, CSS</p>
-              <p>Java, Spring, Oracle</p>
+              <p>Javascript(ES6), Vue, Vuetify, Apexchart</p>
+              <p>Java, Spring Boot, MySQL, JPA</p>
             </div>
+          </div>
+        </div>
+        <div class="right end-right">
+          <div>
+            <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
+            >캡쳐 화면
+            <v-icon class="cursor-icon">mdi-cursor-default-click</v-icon>
           </div>
         </div>
       </div>
@@ -49,70 +57,29 @@ import { defineComponent, onMounted, reactive } from "vue";
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
+const point_color = "#5e17eb";
 </script>
 <style scoped>
 .page {
-  background-color: blanchedalmond;
+  background-color: aqua;
 }
-
-.career {
-  font-size: 17px;
-}
-
-.career .page-detail {
-  padding-left: 8px;
-}
-
-.career-name {
-  margin: 54px 0 2px 0;
-}
-
-.date-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 1000px;
-  margin-bottom: 42px;
-}
-
-.title-small {
-  margin-left: 10px;
-  font-size: 12px;
-}
-
 .line {
-  width: 100%;
+  width: 1172px;
   height: 4px;
   background-color: #5e17eb;
+  position: absolute;
+  left: 0;
 }
 
-.project-div {
-  display: flex;
-  flex-direction: row;
+.icon {
+  margin-top: 10px;
 }
 
-.project-div .icon {
-  margin-top: -5px;
-  margin-right: 13px;
+.end-right {
+  margin-left: 80px;
 }
 
-.project-div .left {
-  margin: 0 60px 0 15px;
-}
-
-.project-div .left .detail {
-  font-size: 15px;
-  width: 285px;
-  margin: 9px 0 0 23px;
-}
-
-.project-div .right .detail {
-  font-size: 15px;
-  width: 300px;
-  margin: 9px 0 60px 23px;
-}
-
-.project-div .detail p {
-  margin: 0 0 6px 0;
+.end-right .cursor-icon {
+  margin-top: 4px;
 }
 </style>

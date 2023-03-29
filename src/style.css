@@ -6,8 +6,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #000;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,25 +37,6 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .card {
   padding: 2em;
 }
@@ -68,7 +49,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #000;
     background-color: #ffffff;
   }
   a:hover {
@@ -143,3 +124,61 @@ button:focus-visible {
   font-size: 12px;
 }
 /* Skill - end */
+
+/* Career - start*/
+.career {
+  font-size: 17px;
+}
+
+.career .page-detail {
+  padding-left: 8px;
+}
+
+.career-name {
+  margin: 54px 0 2px 0;
+}
+
+.date-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
+  margin-bottom: 42px;
+  padding: 9px 0 0 0;
+}
+
+.title-small {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.project-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.project-div .icon {
+  margin-top: -5px;
+  margin-right: 13px;
+}
+
+.project-div .left {
+  margin: 0 60px 0 15px;
+}
+
+.project-div .left .detail {
+  font-size: 15px;
+  width: 285px;
+  margin: 9px 0 0 23px;
+}
+
+.project-div .right .detail {
+  font-size: 15px;
+  width: 300px;
+  margin: 9px 0 60px 23px;
+}
+
+.project-div .detail p {
+  margin: 0 0 6px 0;
+}
+/* Career - end */

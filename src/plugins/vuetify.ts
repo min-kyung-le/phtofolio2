@@ -6,23 +6,5 @@ import "@mdi/font/css/materialdesignicons.css";
 import { createVuetify } from "vuetify";
 import colors from "vuetify/lib/util/colors";
 
-export default createVuetify({
-  defaults: {
-    VBtn: {
-      color: "primary",
-      variant: "flat",
-      rounded: true,
-    },
-  },
-  theme: {
-    themes: {
-      light: {
-        dark: false,
-        colors: {
-          primary: colors.purple.darken3,
-        },
-      },
-    },
-  },
-});
+export default createVuetify({});
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides

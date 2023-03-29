@@ -32,7 +32,7 @@
           </div>
           <div>
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
-            >사용툴
+            >사용 툴 (언어, 기술)
             <div class="detail">
               <p>Javascript, JQuery, CanvasJS, CSS</p>
               <p>Java, Spring, Oracle</p>
@@ -55,64 +55,9 @@ const iconName = "mdi-circle";
   background-color: blanchedalmond;
 }
 
-.career {
-  font-size: 17px;
-}
-
-.career .page-detail {
-  padding-left: 8px;
-}
-
-.career-name {
-  margin: 54px 0 2px 0;
-}
-
-.date-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 1000px;
-  margin-bottom: 42px;
-}
-
-.title-small {
-  margin-left: 10px;
-  font-size: 12px;
-}
-
 .line {
   width: 100%;
   height: 4px;
   background-color: #5e17eb;
-}
-
-.project-div {
-  display: flex;
-  flex-direction: row;
-}
-
-.project-div .icon {
-  margin-top: -5px;
-  margin-right: 13px;
-}
-
-.project-div .left {
-  margin: 0 60px 0 15px;
-}
-
-.project-div .left .detail {
-  font-size: 15px;
-  width: 285px;
-  margin: 9px 0 0 23px;
-}
-
-.project-div .right .detail {
-  font-size: 15px;
-  width: 300px;
-  margin: 9px 0 60px 23px;
-}
-
-.project-div .detail p {
-  margin: 0 0 6px 0;
 }
 </style>
