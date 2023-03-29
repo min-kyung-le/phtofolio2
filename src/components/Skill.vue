@@ -168,7 +168,7 @@ function series(obj: any) {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 60px;
+  height: 55px;
 }
 
 .graph .name {
