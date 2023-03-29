@@ -4,7 +4,8 @@
     <div class="page-detail">
       <div class="sub-content" v-for="(one, idx) in skillsList">
         <div class="sub-title-2" v-if="one.subTitle !== ''">
-          <v-icon class="icon" size="x-small">mdi-rhombus</v-icon
+          <v-icon class="icon" size="x-small" :color="point_color"
+            >mdi-rhombus</v-icon
           ><span class="text">{{ one.subTitle }}</span>
         </div>
         <div class="graph">
@@ -12,7 +13,7 @@
           <div class="text number">{{ one.value }}%</div>
           <div class="chart-div">
             <apexchart
-              width="1000"
+              width="1400"
               height="56"
               type="bar"
               :options="options"
@@ -33,6 +34,8 @@ interface skillobj {
   name: String;
   value: Number;
 }
+
+const point_color = "#5e17eb";
 
 const skills: Array<skillobj> = [
   {
@@ -118,7 +121,7 @@ const options = {
     },
   },
   fill: {
-    colors: ["#5e17eb"],
+    colors: [point_color],
   },
   grid: {
     row: {
