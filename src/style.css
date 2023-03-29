@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;700&family=Source+Sans+Pro:wght@600&display=swap");
 
 :root {
   font-family: "IBM Plex Sans KR", system-ui, Avenir, Helvetica, Arial,
@@ -32,7 +32,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #2a1b40;
 }
 
 h1 {
@@ -81,8 +80,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-i.mdi-plus {
-  font-size: 22px;
 }
