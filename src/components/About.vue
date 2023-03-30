@@ -22,18 +22,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "",
-  setup(props, { emit, attrs, expose, slots }) {
-    return {};
-  },
-});
-</script>
+<script lang="ts" setup></script>
 <style scoped>
 .page {
-  background-color: beige;
+  position: absolute;
 }
 </style>

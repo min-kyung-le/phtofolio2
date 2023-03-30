@@ -34,39 +34,61 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, onBeforeUnmount } from "vue";
+import { watchEffect, onMounted, onBeforeUnmount, defineProps } from "vue";
+import { useStore } from "vuex";
 import gsap from "gsap";
+
+const props = defineProps(["isPageOn"]);
+const store = useStore();
+let animating = store.state.animating;
 
 onMounted(() => {
   pageInAni();
+  console.log("값 확인", animating);
 });
 
-onBeforeUnmount(() => {
-  pageOutAni();
+watchEffect(() => {
+  console.log("watchEffect", props.isPageOn);
+  if (!props.isPageOn) {
+    pageOutAni();
+  } else {
+    pageInAni();
+  }
 });
+
+function pageOutAni() {
+  store.commit("animated", true);
+  let tl = gsap.timeline({
+    onComplete: () => store.commit("animated", false),
+  });
+  const Ani_down = {
+    translateY: 80,
+    duration: 0.4,
+  };
+
+  tl.to(".front-end", Ani_down, "0.4").to(".developer", Ani_down, "<0.2");
+}
 
 function pageInAni() {
-  let tl = gsap.timeline();
+  store.commit("animated", true);
+  let tl = gsap.timeline({
+    onComplete: () => store.commit("animated", false),
+  });
+
   const Ani_up = {
     translateY: 80,
     duration: 0.4,
   };
-  tl.from(".front-end", Ani_up, "0.4").from(".developer", Ani_up, "<0.2");
-
   const title_Ani_up = {
     translateY: 100,
     duration: 0.4,
   };
-  tl.from(".min", title_Ani_up, "<0.2")
-    .from(".kyung", title_Ani_up, "<0.2")
-    .from(".portfolio", title_Ani_up, "<0.2");
 
   const seeMoreAni = {
     opacity: 0,
     translateX: -100,
     duration: 0.4,
   };
-  tl.from(".see-more", seeMoreAni, "<1.4");
 
   const arrowShowAni = {
     opacity: 0,
@@ -80,20 +102,20 @@ function pageInAni() {
     duration: 0.4,
     ease: "Power1.easeInOut",
   };
+
+  tl.from(".front-end", Ani_up, "0.4").from(".developer", Ani_up, "<0.2");
+
+  tl.from(".min", title_Ani_up, "<0.2")
+    .from(".kyung", title_Ani_up, "<0.2")
+    .from(".portfolio", title_Ani_up, "<0.2");
+
+  tl.from(".see-more", seeMoreAni, "<1.4");
+
   tl.from(".arrow-down-span", arrowShowAni, "<0.2").to(
     ".arrow-img",
     arrowRepetAni,
     ">"
   );
-}
-
-function pageOutAni() {
-  let tl = gsap.timeline();
-  const Ani_up = {
-    translateY: 80,
-    duration: 0.4,
-  };
-  tl.to(".front-end", Ani_up, "0.4").from(".developer", Ani_up, "<0.2");
 }
 </script>
 
