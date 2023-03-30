@@ -46,8 +46,8 @@ onMounted(() => {
   Observer.create({
     type: "wheel, touch",
     wheelSpeed: -1,
-    onUp: () => previous(),
-    onDown: () => next(),
+    onUp: () => next(),
+    onDown: () => previous(),
     tolerance: 10,
     preventDefault: true,
   });
