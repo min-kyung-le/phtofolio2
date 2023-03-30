@@ -4,7 +4,7 @@
     <div class="info">min kyung's portfolio</div>
     <div class="sub-info-div">
       <span class="arrow-down-span">
-        <img src="@/assets/images/arrow-down.png" width="63" height="170" />
+        <img src="@/assets/images/arrow-down.png" width="63" height="190" />
       </span>
       <span class="sub-info">If you see more...</span>
     </div>
@@ -60,5 +60,6 @@ onMounted(() => {});
   font-size: 15px;
   text-transform: uppercase;
   align-self: center;
+  margin-top: 80px;
 }
 </style>

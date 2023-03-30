@@ -1,24 +1,31 @@
 <template>
   <div class="done page">
-    <div class="menu-contents">
+    <div v-if="menuShowValue" class="menu-contents">
+      <div class="close-div">
+        <v-icon
+          class="close-btn"
+          color="#fff"
+          size="47px"
+          @click="menuShow(false)"
+          >mdi-close</v-icon
+        >
+      </div>
       <div class="name-div">
         <div
           class="name"
           v-for="(one, idx) in menuList"
-          @click="menuClick(idx)"
+          @click="menuListClick(idx)"
         >
           {{ one.name }}
-          <div
-            class="line"
-            :class="one.isClick === false ? 'opacity-0' : 'opacity-1'"
-          ></div>
         </div>
       </div>
     </div>
     <div class="menu-box">
-      <span class="menu"><v-icon size="35px">mdi-menu</v-icon></span>
+      <span class="menu" @click="menuShow(true)"
+        ><v-icon size="35px">mdi-menu</v-icon></span
+      >
       <span class="arrow-left-span">
-        <img src="@/assets/images/arrow-left.png" width="170" height="63" />
+        <img src="@/assets/images/arrow-left.png" width="190" height="63" />
       </span>
       <span class="sub-info">If you see more...</span>
     </div>
@@ -27,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, ref } from "vue";
 import gsap from "gsap";
 
 onMounted(() => {});
@@ -60,7 +67,9 @@ const menuList: Array<obj> = reactive([
   },
 ]);
 
-function menuClick(number: number) {
+const menuShowValue = ref(false);
+
+function menuListClick(number: number) {
   menuList
     .filter((one) => {
       if (one.isClick) return one;
@@ -70,6 +79,10 @@ function menuClick(number: number) {
     });
 
   menuList[number].isClick = true;
+}
+
+function menuShow(isClick: boolean) {
+  menuShowValue.value = isClick;
 }
 </script>
 
@@ -90,10 +103,14 @@ function menuClick(number: number) {
 
 .menu {
   margin: 0 50px 0 0;
+  cursor: pointer;
 }
 
 .arrow-left-span {
   margin-right: 14px;
+  height: 110px;
+  align-items: center;
+  display: flex;
 }
 .done .info {
   height: 70vh;
@@ -118,14 +135,14 @@ function menuClick(number: number) {
 
 .menu-contents {
   background-color: #000;
-  width: 460px;
+  width: 100%;
   height: 100vh;
   position: absolute;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding-left: 90px;
 }
 
 .name-div {
@@ -134,22 +151,21 @@ function menuClick(number: number) {
 
 .menu-contents .name {
   color: #fff;
-  margin-bottom: 80px;
-  font-size: 28px;
+  margin-bottom: 2px;
+  font-size: 60px;
   cursor: pointer;
+  font-weight: 400;
 }
 
-.done .line {
-  width: 350px;
-  height: 3px;
-  background-color: #fff;
-}
-
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-1 {
-  opacity: 1;
+.close-btn {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  color: rgb(255, 255, 255);
+  caret-color: rgb(255, 255, 255);
+  position: absolute;
+  right: 150px;
+  top: 50px;
+  cursor: pointer;
 }
 </style>
