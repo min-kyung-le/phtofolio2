@@ -1,22 +1,24 @@
 <template>
-  <router-view />
+  <Main />
+  <HomeLayout />
+  <About />
 </template>
 
 <script lang="ts" setup>
+import Main from "@/components/Main.vue";
+import HomeLayout from "@/layout/HomeLayout.vue";
+import About from "@/components/About.vue";
+
 import gsap from "gsap";
 import { Observer } from "gsap/Observer";
-import { useRouter } from "vue-router";
 
 function previous() {
   console.log("올린다");
-  router.push("/");
 }
 gsap.registerPlugin(Observer);
-const router = useRouter();
 
 function next() {
   console.log("내린다");
-  router.push("/about");
 }
 Observer.create({
   type: "wheel, touch",

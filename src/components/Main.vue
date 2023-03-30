@@ -31,16 +31,18 @@
       <span class="sub-info see-more">If you see more...</span>
     </div>
   </div>
-  <HomeLayout />
 </template>
 
 <script setup lang="ts">
-import HomeLayout from "@/layout/HomeLayout.vue";
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, onBeforeUnmount } from "vue";
 import gsap from "gsap";
 
 onMounted(() => {
   pageInAni();
+});
+
+onBeforeUnmount(() => {
+  pageOutAni();
 });
 
 function pageInAni() {
@@ -86,7 +88,12 @@ function pageInAni() {
 }
 
 function pageOutAni() {
-  console.log("pageOutAni함수실행");
+  let tl = gsap.timeline();
+  const Ani_up = {
+    translateY: 80,
+    duration: 0.4,
+  };
+  tl.to(".front-end", Ani_up, "0.4").from(".developer", Ani_up, "<0.2");
 }
 </script>
 
