@@ -13,29 +13,54 @@
   /></span>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineComponent, onMounted, reactive } from "vue";
+import gsap from "gsap";
+
+onMounted(() => {
+  let tl = gsap.timeline();
+  const circleAni_up = {
+    opacity: 0,
+    translateY: -10,
+    duration: 0.4,
+  };
+  const circleAni_down = {
+    opacity: 0,
+    translateY: 200,
+    duration: 0.4,
+  };
+
+  tl.from(".circle", circleAni_up)
+    .from(".line-circle", circleAni_up, "<0.2")
+    .from(".b-circle", circleAni_down, "<1.6")
+    .from(".b-line-circle", circleAni_down, "<0.2");
+});
+</script>
 
 <style scoped>
 .circle {
   position: absolute;
-  top: -13%;
+  transform: translate(0px, -90px);
   left: 6%;
 }
 
 .line-circle {
   position: absolute;
-  top: -13%;
-  left: 13%;
+  left: 11%;
+  transform: translate(0px, -90px);
+  opacity: 1;
 }
 .b-circle {
   position: absolute;
-  bottom: -13%;
+  bottom: 0;
+  transform: translate(0px, 100px);
   right: 6%;
 }
 
 .b-line-circle {
   position: absolute;
-  bottom: -13%;
+  bottom: 0;
+  transform: translate(0px, 100px);
   right: -2%;
 }
 </style>
