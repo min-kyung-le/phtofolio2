@@ -26,8 +26,9 @@ const imgNum = reactive({
   num: 1,
 });
 function click(number: number) {
+  const count = 3;
   if (number > 0) {
-    if (imgNum.num < 3) {
+    if (imgNum.num < count) {
       imgNum.num += 1;
     } else {
       imgNum.num = 1;
@@ -36,7 +37,7 @@ function click(number: number) {
     if (imgNum.num > 1) {
       imgNum.num -= 1;
     } else {
-      imgNum.num = 3;
+      imgNum.num = count;
     }
   }
 }
