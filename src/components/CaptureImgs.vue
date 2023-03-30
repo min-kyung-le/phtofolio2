@@ -7,7 +7,7 @@
       </div>
       <div class="img-grid">
         <img
-          :src="`../../src/assets/images/${imgNum.num}.png`"
+          :src="`/src/assets/images/${imgNum.num}.png`"
           width="1450"
           height="760"
         />
