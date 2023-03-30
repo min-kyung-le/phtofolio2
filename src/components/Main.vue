@@ -31,34 +31,17 @@
       <span class="sub-info see-more">If you see more...</span>
     </div>
   </div>
+  <HomeLayout />
 </template>
 
 <script setup lang="ts">
+import HomeLayout from "@/layout/HomeLayout.vue";
 import { reactive, onMounted } from "vue";
 import gsap from "gsap";
-import { Observer } from "gsap/Observer";
-
-gsap.registerPlugin(Observer);
 
 onMounted(() => {
   pageInAni();
-
-  Observer.create({
-    type: "wheel, touch",
-    wheelSpeed: -1,
-    onUp: () => next(),
-    onDown: () => previous(),
-    tolerance: 10,
-    preventDefault: true,
-  });
 });
-
-function previous() {
-  console.log("올린다");
-}
-function next() {
-  console.log("내린다");
-}
 
 function pageInAni() {
   let tl = gsap.timeline();

@@ -4,12 +4,12 @@ const routes = [
   {
     path: "/",
     name: "Main",
-    component: () => import("@/components/Main.vue"), // 동적 import
+    component: () => import("./components/Main.vue"),
   },
   {
     path: "/about",
     name: "About",
-    component: () => import("@/components/About.vue"),
+    component: () => import("./components/About.vue"),
   },
 ];
 
