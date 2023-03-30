@@ -8,6 +8,7 @@
   <Career2 />
   <CaptureImgs />
   <Contact />
+  <Done />
 </template>
 
 <script lang="ts">
@@ -20,6 +21,7 @@ import Career1 from "./components/Career1.vue";
 import Career2 from "./components/Career2.vue";
 import CaptureImgs from "./components/CaptureImgs.vue";
 import Contact from "./components/Contact.vue";
+import Done from "./components/Done.vue";
 import HomeLayout from "@/layout/HomeLayout.vue";
 
 export default defineComponent({
@@ -35,6 +37,7 @@ export default defineComponent({
     CaptureImgs,
     Contact,
     HomeLayout,
+    Done,
   },
 
   data() {
