@@ -3,6 +3,7 @@
     <transition
       :enter-active-class="route.meta.enterClass"
       :leave-active-class="route.meta.leaveClass"
+      mode="out-in"
     >
       <div class="component-div" :key="route.name">
         <component :is="Component" />
