@@ -1,13 +1,14 @@
 <template>
   <RouterView v-slot="{ Component, route }">
-    <Transition
+    <transition
       :enter-active-class="route.meta.enterClass"
       :leave-active-class="route.meta.leaveClass"
+      mode="out-in"
     >
-      <div class="component-div">
+      <div class="component-div" :key="route.name">
         <component :is="Component" />
       </div>
-    </Transition>
+    </transition>
   </RouterView>
 </template>
 
@@ -23,7 +24,8 @@ import gsap from "gsap";
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
 }
 </style>

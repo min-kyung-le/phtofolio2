@@ -31,6 +31,7 @@
           :class="animated"
           @mouseover="hoverNext(1)"
           @mouseleave="hoverNext(0)"
+          @click="nextPage()"
           >NEXT?</span
         >
       </span>
@@ -46,6 +47,7 @@ import HomeLayout from "@/layout/HomeLayout.vue";
 import { watchEffect, onMounted, onBeforeUnmount, ref } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
+import router from "@/router";
 
 const store = useStore();
 
@@ -54,10 +56,7 @@ onMounted(() => {
 });
 
 function pageInAni() {
-  store.commit("animated", true);
-  let tl = gsap.timeline({
-    onComplete: () => store.commit("animated", false),
-  });
+  let tl = gsap.timeline();
 
   const Ani_up = {
     translateY: 80,
@@ -87,7 +86,8 @@ function pageInAni() {
     ease: "Power1.easeInOut",
   };
 
-  tl.from(".front-end", Ani_up, "0.4").from(".developer", Ani_up, "<0.2");
+  tl.from(".title", { opacity: 0, translateY: 70 }, "<0.5");
+  tl.from(".front-end", Ani_up, "0.6").from(".developer", Ani_up, "<0.2");
 
   tl.from(".min", title_Ani_up, "<0.2")
     .from(".kyung", title_Ani_up, "<0.2")
@@ -105,9 +105,13 @@ function pageInAni() {
 const animated = ref("");
 
 function hoverNext(num: number) {
-  console.log("hoverNext");
-  if (num > 0) animated.value = "animate__animated animate__rubberBand";
-  if (num < 1) animated.value = "";
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
+}
+
+function nextPage() {
+  router.push("/about");
 }
 </script>
 
@@ -118,7 +122,6 @@ function hoverNext(num: number) {
   text-align: center;
   text-transform: uppercase;
   font-family: "Source Sans Pro";
-  margin-top: 21%;
 }
 .title {
   width: 190px;

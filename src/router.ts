@@ -8,8 +8,8 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      enterClass: "animate__animated animate__fadeIn",
-      leaveClass: "animate__animated animate__fadeOut",
+      enterClass: "",
+      leaveClass: "animate__animated animate__fadeOutLeftBig",
     },
   },
   {
@@ -17,8 +17,8 @@ const routes = [
     name: "About",
     component: About,
     meta: {
-      enterClass: "animate__animated animate__fadeIn",
-      leaveClass: "animate__animated animate__fadeOut",
+      enterClass: "animate__animated animate__fadeInRightBig",
+      leaveClass: "animate__animated animate__fadeOutLeftBig",
     },
   },
 ];
