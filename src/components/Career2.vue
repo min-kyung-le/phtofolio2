@@ -47,6 +47,7 @@
                 class="capture-btn"
                 @mouseover="captureTxt(1)"
                 @mouseleave="captureTxt(0)"
+                @click="captureClick()"
               >
                 <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
                 >캡쳐 화면
@@ -67,10 +68,13 @@
         >NEXT</span
       >
     </div>
+    <CaptureImgs v-if="isModal === 'true'" @isClose="captureClose" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import CaptureImgs from "./CaptureImgs.vue";
+
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
@@ -167,12 +171,22 @@ function subContentAni() {
 const isClickAni = ref("");
 
 function captureTxt(num: number) {
-  const txt_ani_class = "animate__animated animate__bounce";
+  const txt_ani_class = "animate__animated animate__jello";
   if (num === 1) {
     isClickAni.value = txt_ani_class;
   } else {
     isClickAni.value = "";
   }
+}
+
+const isModal = ref("false");
+
+function captureClick() {
+  isModal.value = "true";
+}
+
+function captureClose() {
+  isModal.value = "false";
 }
 
 const animated = ref("");
@@ -196,7 +210,7 @@ function hoverNext(num: number) {
 }
 
 function nextPage() {
-  router.push("/captureimgs");
+  router.push("/contact");
 }
 </script>
 <style scoped>

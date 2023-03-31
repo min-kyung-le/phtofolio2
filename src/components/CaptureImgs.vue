@@ -1,5 +1,13 @@
 <template>
   <div class="page captureImgs">
+    <div
+      class="close"
+      @click="closeCaptureImgs()"
+      @mouseover="closeAni(1)"
+      @mouseout="closeAni(0)"
+    >
+      <v-icon class="close-icon" size="60px">mdi-close</v-icon>
+    </div>
     <div class="page-title title1">실제 개발 화면</div>
     <div class="page-detail">
       <div class="icon" @click="click(0)">
@@ -20,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, reactive } from "vue";
+import { defineEmits, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
 
@@ -47,7 +55,6 @@ function click(number: number) {
 const tl = gsap.timeline();
 onMounted(() => {
   titleAni(".title1");
-  nextAni();
 });
 
 let time = "<0.2";
@@ -61,6 +68,32 @@ function titleAni(name: string) {
     },
     time
   );
+}
+
+let ani;
+function closeAni(num: number) {
+  if (num === 1) {
+    ani = gsap.to(".close-icon", {
+      rotation: 360,
+      transformOrigin: "50% 50%",
+      repeat: -1,
+      duration: 1,
+      ease: "Power2.easeInOut",
+      stagger: 0.5,
+      yoyo: true,
+    });
+  } else {
+    ani.kill();
+    gsap.set(".close-icon", {
+      rotation: 0,
+    });
+  }
+}
+
+const emit = defineEmits(["isClose"]);
+
+function closeCaptureImgs() {
+  emit("isClose");
 }
 </script>
 <style scoped>
@@ -85,5 +118,20 @@ function titleAni(name: string) {
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+}
+
+.captureImgs {
+  top: 0;
+  left: 0;
+  padding: 150px 0 0 200px;
+}
+
+.close {
+  width: 80px;
+  position: absolute;
+  right: 360px;
+  top: 120px;
+  cursor: pointer;
+  z-index: 1;
 }
 </style>
