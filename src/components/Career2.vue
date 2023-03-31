@@ -1,6 +1,6 @@
 <template>
   <div class="page career">
-    <div class="page-title">경력</div>
+    <div class="page-title title1">경력</div>
     <div class="page-detail">
       <div class="career-name">
         IT 자원관리 대시보드 시스템 개발<span class="title-small"
@@ -9,8 +9,8 @@
       </div>
       <div class="line"></div>
       <div class="date-div">
-        <span>2021.04</span>
-        <span>2021.10</span>
+        <span class="date1">2021.04</span>
+        <span class="date2">2021.10</span>
       </div>
       <div class="project-div">
         <div class="left">
@@ -42,34 +42,166 @@
         </div>
         <div class="right end-right">
           <div class="btn-icon-div">
-            <div class="btn-effect">
-              <div>
+            <div class="btn-effect" :class="isClickAni">
+              <div
+                class="capture-btn"
+                @mouseover="captureTxt(1)"
+                @mouseleave="captureTxt(0)"
+              >
                 <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
                 >캡쳐 화면
               </div>
-              <div class="click-line"></div>
             </div>
             <v-icon class="cursor-icon">mdi-cursor-default-click</v-icon>
           </div>
         </div>
       </div>
     </div>
+    <div class="sub-info-div">
+      <span
+        class="next"
+        :class="animated"
+        @mouseover="hoverNext(1)"
+        @mouseleave="hoverNext(0)"
+        @click="nextPage()"
+        >NEXT</span
+      >
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive } from "vue";
+import gsap from "gsap";
+import router from "@/router";
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
 const point_color = "#5e17eb";
+
+const tl = gsap.timeline();
+
+onMounted(() => {
+  titleAni(".title1");
+  careerNameAni();
+  lineAni();
+  subContentAni();
+  nextAni();
+});
+
+let time = "<0.2";
+function titleAni(name: string) {
+  tl.from(
+    name,
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+}
+
+function careerNameAni() {
+  tl.from(
+    ".career-name",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+}
+
+function lineAni() {
+  tl.from(
+    ".line",
+    {
+      width: 0,
+      duration: 1,
+      ease: "Power2.easeInOut",
+    },
+    time
+  );
+}
+
+function subContentAni() {
+  tl.from(
+    ".date1",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  ).from(
+    ".date2",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+
+  tl.from(
+    ".left",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  ).from(
+    ".right",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+}
+
+const isClickAni = ref("");
+
+function captureTxt(num: number) {
+  const txt_ani_class = "animate__animated animate__bounce";
+  if (num === 1) {
+    isClickAni.value = txt_ani_class;
+  } else {
+    isClickAni.value = "";
+  }
+}
+
+const animated = ref("");
+
+function nextAni() {
+  tl.from(
+    ".next",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    ">"
+  );
+}
+
+function hoverNext(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
+}
+
+function nextPage() {
+  router.push("/captureimgs");
+}
 </script>
 <style scoped>
-.page {
-  background-color: aqua;
-}
 .line {
-  width: 1172px;
+  width: 1265px;
   height: 4px;
   background-color: #5e17eb;
   position: absolute;
@@ -86,7 +218,6 @@ const point_color = "#5e17eb";
 
 .end-right .cursor-icon {
   margin-top: 15px;
-  margin-left: -24px;
 }
 
 .click-line {
@@ -105,5 +236,9 @@ const point_color = "#5e17eb";
 .btn-icon-div {
   display: flex;
   flex-direction: row;
+}
+
+.capture-btn {
+  cursor: pointer;
 }
 </style>
