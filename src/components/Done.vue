@@ -108,6 +108,8 @@ function menuShow(isClick: boolean) {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: absolute;
+  left: 100px;
 }
 
 .menu {
@@ -144,7 +146,7 @@ function menuShow(isClick: boolean) {
   font-family: "Source Sans Pro";
 }
 .see-more {
-  top: 55%;
+  top: 76%;
   left: 12%;
   text-transform: uppercase;
 }

@@ -1,6 +1,8 @@
 <template>
   <div class="page career">
-    <div class="page-title title1">경력</div>
+    <div class="title-div">
+      <div class="page-title title1">경력</div>
+    </div>
     <div class="page-detail">
       <div class="career-name">
         IT 자원관리 시스템 개발<span class="title-small">(약 2년 4개월)</span>

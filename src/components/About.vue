@@ -1,12 +1,16 @@
 <template>
   <div class="page about">
-    <div class="page-title title1">{{ title1 }}</div>
+    <div class="title-div">
+      <div class="page-title title1">{{ title1 }}</div>
+    </div>
     <div class="page-detail">
       <p v-for="one in summary" class="sumtxt">
         {{ one.text }}
       </p>
     </div>
-    <div class="page-title page-title-2 title2">{{ title2 }}</div>
+    <div class="title-div">
+      <div class="page-title page-title-2 title2">{{ title2 }}</div>
+    </div>
     <div class="page-detail">
       <p v-for="one in strengths" class="strtxt">
         {{ one.text }}
@@ -177,5 +181,9 @@ function nextPage() {
 <style scoped>
 .about .menu-contents {
   top: 0;
+}
+
+.title2 {
+  height: 140px;
 }
 </style>

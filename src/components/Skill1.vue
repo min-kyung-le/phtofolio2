@@ -1,6 +1,8 @@
 <template>
   <div class="page">
-    <div class="page-title title1">사용 스킬</div>
+    <div class="title-div">
+      <div class="page-title title1">사용 스킬</div>
+    </div>
     <div class="page-detail">
       <div class="sub-content" v-for="(one, idx) in skillsList">
         <div class="sub-title-2" v-if="one.subTitle !== ''">

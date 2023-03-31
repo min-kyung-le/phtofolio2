@@ -103,7 +103,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 90px 0 0 10%;
+  align-items: center;
   background-color: #fff;
   position: absolute;
 }
@@ -232,7 +232,27 @@ h1 {
   width: 80px;
   position: absolute;
   right: 20%;
-  top: 10%;
+  top: 50px;
   cursor: pointer;
   z-index: 1;
 }
+
+.title-div {
+  width: 1550px;
+  display: flex;
+  height: 100px;
+  flex-direction: column-reverse;
+  align-content: center;
+}
+
+.page-detail {
+  width: 1550px;
+}
+
+/** 반응형 웹 
+@media (max-width: 1800px) {
+  .page {
+    padding: 
+  }
+
+}*/

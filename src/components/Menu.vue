@@ -127,11 +127,10 @@ function closeMenu() {
 }
 
 .name-div {
-  width: 360px;
-}
-.name-div {
   position: absolute;
+  width: 360px;
   left: 12%;
+  top: 210px;
 }
 
 .menu-contents .name {
