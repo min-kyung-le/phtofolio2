@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="page-title">사용 스킬</div>
+    <div class="page-title title1">사용 스킬</div>
     <div class="page-detail">
       <div class="sub-content" v-for="(one, idx) in skillsList">
         <div class="sub-title-2" v-if="one.subTitle !== ''">
@@ -23,11 +23,23 @@
         </div>
       </div>
     </div>
+    <div class="sub-info-div">
+      <span
+        class="next"
+        :class="animated"
+        @mouseover="hoverNext(1)"
+        @mouseleave="hoverNext(0)"
+        @click="nextPage()"
+        >NEXT</span
+      >
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, onMounted, reactive } from "vue";
+import { onMounted, reactive, ref } from "vue";
+import gsap from "gsap";
+import router from "@/router";
 
 interface skillobj {
   subTitle: String;
@@ -69,6 +81,65 @@ const skills: Array<skillobj> = [
     value: 71,
   },
 ];
+
+onMounted(() => {
+  titleAni("title1");
+  subContentAni();
+  nextAni();
+});
+const tl = gsap.timeline();
+
+function titleAni(name: string) {
+  tl.from(
+    name,
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    "<0.2"
+  );
+}
+
+function subContentAni() {
+  let time = "<0.2";
+  document.querySelectorAll(".sub-content").forEach((e, idx) => {
+    if (idx > 0) time = "<0.1";
+    tl.from(
+      e,
+      {
+        opacity: 0,
+        translateX: -60,
+        duration: 0.5,
+      },
+      time
+    );
+  });
+}
+
+const animated = ref("");
+
+function nextAni() {
+  tl.from(
+    ".next",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    ">"
+  );
+}
+
+function hoverNext(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
+}
+
+function nextPage() {
+  router.push("/skill2");
+}
 
 const skillsList = reactive(skills);
 
@@ -127,8 +198,4 @@ function series(obj: any) {
   ];
 }
 </script>
-<style scoped>
-.page {
-  background-color: aquamarine;
-}
-</style>
+<style scoped></style>

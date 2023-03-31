@@ -100,12 +100,12 @@ const skills: Array<skillobj> = [
 const tl = gsap.timeline();
 
 onMounted(() => {
-  textAni(".title1");
+  titleAni(".title1");
   subContentAni();
   nextAni();
 });
 
-function textAni(name: string) {
+function titleAni(name: string) {
   tl.from(
     name,
     {
