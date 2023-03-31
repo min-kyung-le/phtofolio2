@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "./components/Main.vue";
+import Main from "./components/Main.vue";
 import About from "./components/About.vue";
 import Skill1 from "./components/Skill1.vue";
 import Skill2 from "./components/Skill2.vue";
@@ -12,8 +12,8 @@ import Done from "./components/Done.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Main",
+    component: Main,
     meta: {
       enterClass: "",
       leaveClass: "animate__animated animate__fadeOut",

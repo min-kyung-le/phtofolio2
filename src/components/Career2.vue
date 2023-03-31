@@ -66,22 +66,33 @@
         @mouseout="hoverNext(0)"
         @click="nextPage()"
         >NEXT</span
+      ><span
+        v-if="store.state.isMenuShow"
+        class="all-menu"
+        :class="animated_menu"
+        @mouseover="hoverAllMenu(1)"
+        @mouseout="hoverAllMenu(0)"
+        @click="menuShow(true)"
+        >MENU</span
       >
     </div>
+    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     <CaptureImgs v-if="isModal === 'true'" @isClose="captureClose" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import Menu from "./Menu.vue";
 import CaptureImgs from "./CaptureImgs.vue";
 
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useStore } from "vuex";
+const store = useStore();
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
-const point_color = "#5e17eb";
 
 const tl = gsap.timeline();
 
@@ -211,6 +222,19 @@ function hoverNext(num: number) {
 
 function nextPage() {
   router.push("/contact");
+}
+
+const animated_menu = ref("");
+
+function hoverAllMenu(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated_menu.value = animate_class;
+  if (num === 0) animated_menu.value = "";
+}
+
+const menuShowValue = ref(false);
+function menuShow(isClick: boolean) {
+  menuShowValue.value = isClick;
 }
 </script>
 <style scoped>

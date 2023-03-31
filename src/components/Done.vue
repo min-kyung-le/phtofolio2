@@ -25,12 +25,15 @@ import Menu from "./Menu.vue";
 import { onMounted, ref } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useStore } from "vuex";
 
 let tl = gsap.timeline();
 
+const store = useStore();
 onMounted(() => {
   titleAni(".title1");
   arrowAni();
+  store.state.isMenuShow = true;
 });
 
 function titleAni(name: string) {
@@ -115,5 +118,6 @@ function menuShow(isClick: boolean) {
   font-size: 17px;
   align-self: center;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 </style>

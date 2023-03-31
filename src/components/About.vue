@@ -22,22 +22,28 @@
         >NEXT</span
       >
       <span
+        v-if="store.state.isMenuShow"
         class="all-menu"
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
-        @click="showMenu()"
+        @click="menuShow(true)"
         >MENU</span
       >
     </div>
+    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import Menu from "./Menu.vue";
+
 import { ref, onMounted } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
+import { useStore } from "vuex";
+const store = useStore();
 gsap.registerPlugin(TextPlugin);
 
 const summary = [
@@ -120,8 +126,9 @@ function hoverAllMenu(num: number) {
   if (num === 0) animated_menu.value = "";
 }
 
-function showMenu() {
-  console.log("showMenu");
+const menuShowValue = ref(false);
+function menuShow(isClick: boolean) {
+  menuShowValue.value = isClick;
 }
 
 const animated = ref("");

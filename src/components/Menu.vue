@@ -35,7 +35,7 @@ interface obj {
 }
 const menuList: Array<obj> = reactive([
   {
-    name: "개요",
+    name: "메인",
     isClick: false,
   },
   {
@@ -92,14 +92,14 @@ function menuHover(num: number, idx: number) {
 
 function menuListClick(number: number) {
   if (number === 0) {
-    router.push("/main");
+    router.push("/");
   } else if (number === 1) {
     router.push("/about");
   } else if (number === 2) {
     router.push("/skill1");
   } else if (number === 3) {
     router.push("/career1");
-  } else if (number === 3) {
+  } else if (number === 4) {
     router.push("/contact");
   }
 }
@@ -115,9 +115,10 @@ function closeMenu() {
 .menu-contents {
   background-color: #000;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,7 +130,7 @@ function closeMenu() {
 }
 .name-div {
   position: absolute;
-  left: 180px;
+  left: 12%;
 }
 
 .menu-contents .name {
