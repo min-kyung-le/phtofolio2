@@ -3,17 +3,17 @@ import { createStore } from "vuex";
 const store = createStore({
   state() {
     return {
-      animating: false,
+      isMenuShow: false,
     };
   },
   getters: {
-    getAnimating(state) {
-      return state.animating;
+    getIsMenuShow(state) {
+      return state.isMenuShow;
     },
   },
   mutations: {
-    animated(state, payload) {
-      state.animating = payload.value;
+    setIsMenuShow(state, payload) {
+      state.isMenuShow = payload.value;
     },
   },
 });

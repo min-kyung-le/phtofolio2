@@ -1,26 +1,6 @@
 <template>
   <div class="done page">
-    <div v-if="menuShowValue" class="menu-contents">
-      <div
-        class="close"
-        @click="menuShow(false)"
-        @mouseover="closeAni(1)"
-        @mouseout="closeAni(0)"
-      >
-        <v-icon class="close-icon" size="60px" color="#fff">mdi-close</v-icon>
-      </div>
-      <div class="name-div">
-        <div
-          class="name"
-          v-for="(one, idx) in menuList"
-          @click="menuListClick(idx)"
-          @mouseover="menuHover(1)"
-          @mouseout="menuHover(0)"
-        >
-          {{ one.name }}
-        </div>
-      </div>
-    </div>
+    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     <div class="menu-box">
       <span class="menu" @click="menuShow(true)"
         ><v-icon size="35px">mdi-menu</v-icon></span
@@ -40,38 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref } from "vue";
+import Menu from "./Menu.vue";
+
+import { onMounted, ref } from "vue";
 import gsap from "gsap";
-
-onMounted(() => {});
-
-interface obj {
-  name: string;
-  isClick: boolean;
-}
-
-const menuList: Array<obj> = reactive([
-  {
-    name: "개요",
-    isClick: false,
-  },
-  {
-    name: "핵심 강점",
-    isClick: false,
-  },
-  {
-    name: "사용 기술",
-    isClick: false,
-  },
-  {
-    name: "경력",
-    isClick: false,
-  },
-  {
-    name: "연락처",
-    isClick: true,
-  },
-]);
+import router from "@/router";
 
 let tl = gsap.timeline();
 
@@ -113,40 +66,7 @@ function arrowAni() {
   );
 }
 
-let ani;
-function closeAni(num: number) {
-  if (num === 1) {
-    ani = gsap.to(".close-icon", {
-      rotation: 360,
-      transformOrigin: "50% 50%",
-      repeat: -1,
-      duration: 1,
-      ease: "Power2.easeInOut",
-      stagger: 0.5,
-      yoyo: true,
-    });
-  } else {
-    ani.kill();
-    gsap.set(".close-icon", {
-      rotation: 0,
-    });
-  }
-}
-
 const menuShowValue = ref(false);
-
-function menuListClick(number: number) {
-  menuList
-    .filter((one) => {
-      if (one.isClick) return one;
-    })
-    .map((one) => {
-      one.isClick = false;
-    });
-
-  menuList[number].isClick = true;
-}
-
 function menuShow(isClick: boolean) {
   menuShowValue.value = isClick;
 }
@@ -195,38 +115,5 @@ function menuShow(isClick: boolean) {
   font-size: 17px;
   align-self: center;
   margin-bottom: 8px;
-}
-
-.menu-contents {
-  background-color: #000;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.name-div {
-  width: 360px;
-}
-
-.menu-contents .name {
-  color: #fff;
-  margin-bottom: 2px;
-  font-size: 60px;
-  cursor: pointer;
-  font-weight: 400;
-}
-
-.name-div {
-  position: absolute;
-  left: 180px;
-}
-
-.close {
-  right: 150px;
-  top: 80px;
 }
 </style>

@@ -21,6 +21,14 @@
         @click="nextPage()"
         >NEXT</span
       >
+      <span
+        class="all-menu"
+        :class="animated_menu"
+        @mouseover="hoverAllMenu(1)"
+        @mouseout="hoverAllMenu(0)"
+        @click="showMenu()"
+        >MENU</span
+      >
     </div>
   </div>
 </template>
@@ -102,6 +110,18 @@ function strengthsAni() {
       "<0.1"
     );
   });
+}
+
+const animated_menu = ref("");
+
+function hoverAllMenu(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated_menu.value = animate_class;
+  if (num === 0) animated_menu.value = "";
+}
+
+function showMenu() {
+  console.log("showMenu");
 }
 
 const animated = ref("");
