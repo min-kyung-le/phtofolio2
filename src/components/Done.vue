@@ -25,11 +25,16 @@
         ><v-icon size="35px">mdi-menu</v-icon></span
       >
       <span class="arrow-left-span">
-        <img src="@/assets/images/arrow-left.png" width="190" height="63" />
+        <img
+          class="arrow-img"
+          src="@/assets/images/arrow-left.png"
+          width="190"
+          height="63"
+        />
       </span>
       <span class="sub-info">If you see more...</span>
     </div>
-    <div class="info">Thank you for visiting!</div>
+    <div class="info title1">Thank you for visiting!</div>
   </div>
 </template>
 
@@ -67,6 +72,46 @@ const menuList: Array<obj> = reactive([
   },
 ]);
 
+let tl = gsap.timeline();
+
+onMounted(() => {
+  titleAni(".title1");
+  arrowAni();
+});
+
+function titleAni(name: string) {
+  tl.from(
+    name,
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    ">0.6"
+  );
+}
+
+function arrowAni() {
+  const arrowRepetAni = {
+    translateX: 70,
+    repeat: 20,
+    yoyo: true,
+    duration: 0.4,
+    ease: "Power1.easeInOut",
+  };
+
+  const arrowShowAni = {
+    opacity: 0,
+    duration: 0.4,
+  };
+
+  tl.from(".arrow-left-span", arrowShowAni, "<0.2").to(
+    ".arrow-img",
+    arrowRepetAni,
+    ">"
+  );
+}
+
 const menuShowValue = ref(false);
 
 function menuListClick(number: number) {
@@ -87,9 +132,6 @@ function menuShow(isClick: boolean) {
 </script>
 
 <style scoped>
-.page {
-  background-color: antiquewhite;
-}
 .done {
   font-family: "Source Sans Pro";
   padding: 0 0 0 108px;
@@ -111,6 +153,7 @@ function menuShow(isClick: boolean) {
   height: 110px;
   align-items: center;
   display: flex;
+  overflow-x: hidden;
 }
 .done .info {
   height: 70vh;
