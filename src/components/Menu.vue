@@ -102,6 +102,7 @@ function menuListClick(number: number) {
   } else if (number === 4) {
     router.push("/contact");
   }
+  closeMenu();
 }
 
 const emit = defineEmits(["closeMenu"]);
