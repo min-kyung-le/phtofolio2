@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import HomeLayout from "@/layout/HomeLayout.vue";
 
-import { watchEffect, onMounted, onBeforeUnmount, defineProps } from "vue";
+import { watchEffect, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
 

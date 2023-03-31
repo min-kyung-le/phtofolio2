@@ -1,15 +1,23 @@
 import { createWebHistory, createRouter } from "vue-router";
+import Home from "@/components/Main.vue";
+import About from "@/components/About.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Main",
-    component: () => import("@/components/Main.vue"), // 동적 import
+    component: Home,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
   },
   {
     path: "/about",
-    name: "About",
-    component: () => import("@/components/About.vue"),
+    component: About,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
   },
 ];
 
