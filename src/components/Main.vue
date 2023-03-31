@@ -31,43 +31,21 @@
       <span class="sub-info see-more">If you see more...</span>
     </div>
   </div>
+  <HomeLayout />
 </template>
 
 <script setup lang="ts">
+import HomeLayout from "@/layout/HomeLayout.vue";
+
 import { watchEffect, onMounted, onBeforeUnmount, defineProps } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
 
-const props = defineProps(["isPageOn"]);
 const store = useStore();
-let animating = store.state.animating;
 
 onMounted(() => {
   pageInAni();
-  console.log("값 확인", animating);
 });
-
-watchEffect(() => {
-  console.log("watchEffect", props.isPageOn);
-  if (!props.isPageOn) {
-    pageOutAni();
-  } else {
-    pageInAni();
-  }
-});
-
-function pageOutAni() {
-  store.commit("animated", true);
-  let tl = gsap.timeline({
-    onComplete: () => store.commit("animated", false),
-  });
-  const Ani_down = {
-    translateY: 80,
-    duration: 0.4,
-  };
-
-  tl.to(".front-end", Ani_down, "0.4").to(".developer", Ani_down, "<0.2");
-}
 
 function pageInAni() {
   store.commit("animated", true);
