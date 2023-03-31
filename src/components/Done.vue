@@ -1,6 +1,8 @@
 <template>
   <div class="done page">
-    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    <v-expand-transition>
+      <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    </v-expand-transition>
     <div class="menu-box">
       <span class="menu" @click="menuShow(true)"
         ><v-icon size="35px">mdi-menu</v-icon></span
@@ -99,7 +101,7 @@ function menuShow(isClick: boolean) {
 }
 .done {
   font-family: "Source Sans Pro";
-  padding: 0 0 0 108px;
+  padding: 0 0 0 75px;
 }
 
 .menu-box {

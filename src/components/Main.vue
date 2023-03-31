@@ -124,10 +124,10 @@ function nextPage() {
   font-family: "Source Sans Pro";
 }
 .title {
-  width: 190px;
+  width: 350px;
   background-color: #000;
   color: #fff;
-  padding: 9px 90px;
+  padding: 9px 50px;
   font-weight: 400;
   font-size: 15px;
 }
@@ -176,5 +176,9 @@ function nextPage() {
 .portfolio {
   transform: translate(0px, 0px);
   display: inline-block;
+}
+
+.sub-info-div {
+  right: 250px;
 }
 </style>

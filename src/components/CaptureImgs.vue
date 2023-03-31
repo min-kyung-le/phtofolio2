@@ -1,5 +1,5 @@
 <template>
-  <div class="page captureImgs">
+  <v-card class="page captureImgs">
     <div
       class="close"
       @click="closeCaptureImgs()"
@@ -24,7 +24,7 @@
         <v-icon size="50px">mdi-chevron-right</v-icon>
       </div>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts" setup>
@@ -112,6 +112,7 @@ function closeCaptureImgs() {
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
+  align-self: center;
 }
 
 .page-detail {
@@ -123,6 +124,12 @@ function closeCaptureImgs() {
 .captureImgs {
   top: 0;
   left: 0;
-  padding: 150px 0 0 200px;
+  padding: 70px 0 0 100px;
+  position: absolute;
+}
+
+.close {
+  top: 4%;
+  right: 3%;
 }
 </style>

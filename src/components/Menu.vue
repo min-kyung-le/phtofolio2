@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-contents">
+  <v-card class="menu-contents" width="100%" height="100%">
     <div
       class="close"
       @click="closeMenu()"
@@ -19,9 +19,8 @@
       >
         {{ one.name }}
         <div class="line" :class="animated[idx]"></div>
-      </div>
-    </div>
-  </div>
+      </div></div
+  ></v-card>
 </template>
 
 <script setup lang="ts">
@@ -119,7 +118,7 @@ function closeMenu() {
   height: 100%;
   position: absolute;
   left: 0;
-  top: -20px;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

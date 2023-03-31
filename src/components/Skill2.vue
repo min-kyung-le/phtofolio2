@@ -42,7 +42,9 @@
         >MENU</span
       >
     </div>
-    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    <v-expand-transition>
+      <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    </v-expand-transition>
   </div>
 </template>
 

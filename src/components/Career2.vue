@@ -76,8 +76,12 @@
         >MENU</span
       >
     </div>
-    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
-    <CaptureImgs v-if="isModal === 'true'" @isClose="captureClose" />
+    <v-expand-transition>
+      <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    </v-expand-transition>
+    <v-expand-transition>
+      <CaptureImgs v-if="isModal === 'true'" @isClose="captureClose" />
+    </v-expand-transition>
   </div>
 </template>
 
@@ -182,7 +186,7 @@ function subContentAni() {
 const isClickAni = ref("");
 
 function captureTxt(num: number) {
-  const txt_ani_class = "animate__animated animate__jello";
+  const txt_ani_class = "animate__animated animate__rubberBand";
   if (num === 1) {
     isClickAni.value = txt_ani_class;
   } else {
@@ -260,10 +264,6 @@ function menuShow(isClick: boolean) {
   background-color: #5e17eb;
   position: absolute;
   left: 0;
-}
-
-.icon {
-  margin-top: 10px;
 }
 
 .end-right {

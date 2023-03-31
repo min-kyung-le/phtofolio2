@@ -33,7 +33,9 @@
         >MENU</span
       >
     </div>
-    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    <v-expand-transition>
+      <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
+    </v-expand-transition>
   </div>
   <HomeLayout_contact />
 </template>
@@ -170,6 +172,7 @@ function menuShow(isClick: boolean) {
 <style scoped>
 .sub-info-div {
   right: 120px;
+  bottom: 140px;
 }
 .contact {
   justify-content: center;
