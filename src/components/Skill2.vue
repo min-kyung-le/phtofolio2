@@ -134,6 +134,11 @@ function subContentAni() {
 const animated = ref("");
 
 function nextAni() {
+  let time = "<0.7";
+  if (store.state.isMenuShow) {
+    menuAni();
+    time = "<0.2";
+  }
   tl.from(
     ".next",
     {
@@ -141,7 +146,18 @@ function nextAni() {
       translateX: -50,
       duration: 0.5,
     },
-    ">"
+    time
+  );
+}
+function menuAni() {
+  tl.from(
+    ".all-menu",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    "<0.5"
   );
 }
 

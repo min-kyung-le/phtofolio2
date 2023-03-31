@@ -118,11 +118,12 @@ function closeMenu() {
   height: 100%;
   position: absolute;
   left: 0;
-  top: 0;
+  top: -20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 15%;
+  z-index: 1;
 }
 
 .name-div {

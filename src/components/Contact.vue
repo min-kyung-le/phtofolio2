@@ -23,17 +23,30 @@
         @mouseout="hoverNext(0)"
         @click="nextPage()"
         >NEXT</span
+      ><span
+        v-if="store.state.isMenuShow"
+        class="all-menu"
+        :class="animated_menu"
+        @mouseover="hoverAllMenu(1)"
+        @mouseout="hoverAllMenu(0)"
+        @click="menuShow(true)"
+        >MENU</span
       >
     </div>
+    <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
   </div>
   <HomeLayout_contact />
 </template>
 
 <script lang="ts" setup>
 import HomeLayout_contact from "@/layout/HomeLayout_contact.vue";
+import Menu from "./Menu.vue";
+
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useStore } from "vuex";
+const store = useStore();
 
 const tl = gsap.timeline();
 
@@ -103,6 +116,11 @@ function subContentAni() {
 }
 
 function nextAni() {
+  let time = "<0.7";
+  if (store.state.isMenuShow) {
+    menuAni();
+    time = "<0.2";
+  }
   tl.from(
     ".next",
     {
@@ -110,7 +128,19 @@ function nextAni() {
       translateX: -50,
       duration: 0.5,
     },
-    "<0.7"
+    time
+  );
+}
+
+function menuAni() {
+  tl.from(
+    ".all-menu",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    "<0.5"
   );
 }
 
@@ -123,8 +153,24 @@ function hoverNext(num: number) {
 function nextPage() {
   router.push("/done");
 }
+
+const animated_menu = ref("");
+
+function hoverAllMenu(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated_menu.value = animate_class;
+  if (num === 0) animated_menu.value = "";
+}
+
+const menuShowValue = ref(false);
+function menuShow(isClick: boolean) {
+  menuShowValue.value = isClick;
+}
 </script>
 <style scoped>
+.sub-info-div {
+  right: 120px;
+}
 .contact {
   justify-content: center;
   padding: 78px 0 0 0;

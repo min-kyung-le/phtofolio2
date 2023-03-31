@@ -13,9 +13,12 @@
           height="63"
         />
       </span>
-      <span class="sub-info">If you see more...</span>
+      <span class="sub-info see-more">If you see more...</span>
     </div>
-    <div class="info title1">Thank you for visiting!</div>
+    <div class="info">
+      <p class="title1"></p>
+      <p class="title2"></p>
+    </div>
   </div>
 </template>
 
@@ -23,35 +26,39 @@
 import Menu from "./Menu.vue";
 
 import { onMounted, ref } from "vue";
-import gsap from "gsap";
 import router from "@/router";
 import { useStore } from "vuex";
+
+import gsap from "gsap";
+import TextPlugin from "gsap/TextPlugin";
+gsap.registerPlugin(TextPlugin);
 
 let tl = gsap.timeline();
 
 const store = useStore();
 onMounted(() => {
-  titleAni(".title1");
+  titleAni(".title1", "That's it!");
+  titleAni(".title2", "Thank you for visiting!");
   arrowAni();
   store.state.isMenuShow = true;
 });
 
-function titleAni(name: string) {
-  tl.from(
+function titleAni(name: string, text: string) {
+  tl.to(
     name,
     {
-      translateX: -50,
-      duration: 0.4,
-      opacity: 0,
+      text: text,
+      duration: 1,
+      ease: "none",
     },
-    ">0.6"
+    ">"
   );
 }
 
 function arrowAni() {
   const arrowRepetAni = {
     translateX: 70,
-    repeat: 20,
+    repeat: -1,
     yoyo: true,
     duration: 0.4,
     ease: "Power1.easeInOut",
@@ -62,11 +69,22 @@ function arrowAni() {
     duration: 0.4,
   };
 
-  tl.from(".arrow-left-span", arrowShowAni, "<0.2").to(
-    ".arrow-img",
-    arrowRepetAni,
+  tl.from(
+    ".menu-box",
+    {
+      translateX: 100,
+      opacity: 0,
+      duration: 0.4,
+    },
     ">"
   );
+  tl.from(".arrow-left-span", arrowShowAni, "<0.2");
+  const seeMoreAni = {
+    opacity: 0,
+    duration: 0.4,
+  };
+  tl.from(".see-more", seeMoreAni, "<0.2");
+  tl.to(".arrow-img", arrowRepetAni, ">");
 }
 
 const menuShowValue = ref(false);
@@ -76,6 +94,9 @@ function menuShow(isClick: boolean) {
 </script>
 
 <style scoped>
+.done p {
+  text-transform: uppercase;
+}
 .done {
   font-family: "Source Sans Pro";
   padding: 0 0 0 108px;
@@ -100,12 +121,19 @@ function menuShow(isClick: boolean) {
   overflow-x: hidden;
 }
 .done .info {
+  width: 400px;
   height: 70vh;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   align-self: center;
+  padding-top: 16%;
 }
+
+.done p {
+  margin: 0;
+}
+
 .info {
   color: #000;
   padding: 15px;
@@ -113,11 +141,9 @@ function menuShow(isClick: boolean) {
   font-size: 30px;
   font-family: "Source Sans Pro";
 }
-.sub-info {
-  font-weight: 700;
-  font-size: 17px;
-  align-self: center;
-  margin-bottom: 8px;
+.see-more {
+  top: 55%;
+  left: 12%;
   text-transform: uppercase;
 }
 </style>

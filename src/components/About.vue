@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page about">
     <div class="page-title title1">{{ title1 }}</div>
     <div class="page-detail">
       <p v-for="one in summary" class="sumtxt">
@@ -74,7 +74,36 @@ onMounted(() => {
   summaryAni();
   titleAni(2);
   strengthsAni();
+  nextAni();
 });
+
+function nextAni() {
+  let time = "<0.7";
+  if (store.state.isMenuShow) {
+    menuAni();
+    time = "<0.2";
+  }
+  tl.from(
+    ".next",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    time
+  );
+}
+function menuAni() {
+  tl.from(
+    ".all-menu",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    "<0.5"
+  );
+}
 
 function titleAni(num: number) {
   tl.from(
@@ -143,4 +172,8 @@ function nextPage() {
   router.push("/skill1");
 }
 </script>
-<style scoped></style>
+<style scoped>
+.about .menu-contents {
+  top: 0;
+}
+</style>

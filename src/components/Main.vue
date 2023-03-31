@@ -80,7 +80,7 @@ function pageInAni() {
 
   const arrowRepetAni = {
     translateX: -70,
-    repeat: 20,
+    repeat: -1,
     yoyo: true,
     duration: 0.4,
     ease: "Power1.easeInOut",
