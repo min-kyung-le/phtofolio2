@@ -83,7 +83,7 @@ const skills: Array<skillobj> = [
 ];
 
 onMounted(() => {
-  titleAni("title1");
+  titleAni(".title1");
   subContentAni();
   nextAni();
 });
@@ -138,7 +138,7 @@ function hoverNext(num: number) {
 }
 
 function nextPage() {
-  router.push("/skill2");
+  router.push("/career1");
 }
 
 const skillsList = reactive(skills);

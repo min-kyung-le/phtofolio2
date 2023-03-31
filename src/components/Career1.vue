@@ -1,14 +1,14 @@
 <template>
   <div class="page career">
-    <div class="page-title">경력</div>
+    <div class="page-title title1">경력</div>
     <div class="page-detail">
       <div class="career-name">
         IT 자원관리 시스템 개발<span class="title-small">(약 2년 4개월)</span>
       </div>
       <div class="line"></div>
       <div class="date-div">
-        <span>2018.11</span>
-        <span>2021.03</span>
+        <span class="date1">2018.11</span>
+        <span class="date2">2021.03</span>
       </div>
       <div class="project-div">
         <div class="left">
@@ -41,20 +41,137 @@
         </div>
       </div>
     </div>
+    <div class="sub-info-div">
+      <span
+        class="next"
+        :class="animated"
+        @mouseover="hoverNext(1)"
+        @mouseleave="hoverNext(0)"
+        @click="nextPage()"
+        >NEXT</span
+      >
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive } from "vue";
+import gsap from "gsap";
+import router from "@/router";
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
-</script>
-<style scoped>
-.page {
-  background-color: blanchedalmond;
+
+const tl = gsap.timeline();
+
+onMounted(() => {
+  titleAni(".title1");
+  careerNameAni();
+  lineAni();
+  subContentAni();
+  nextAni();
+});
+
+let time = "<0.2";
+function titleAni(name: string) {
+  tl.from(
+    name,
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
 }
 
+function careerNameAni() {
+  tl.from(
+    ".career-name",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+}
+
+function lineAni() {
+  tl.from(
+    ".line",
+    {
+      width: 0,
+      duration: 1,
+      ease: "Power2.easeInOut",
+    },
+    time
+  );
+}
+
+function subContentAni() {
+  tl.from(
+    ".date1",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  ).from(
+    ".date2",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+
+  tl.from(
+    ".left",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  ).from(
+    ".right",
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    time
+  );
+}
+
+const animated = ref("");
+
+function nextAni() {
+  tl.from(
+    ".next",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    ">"
+  );
+}
+
+function hoverNext(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
+}
+
+function nextPage() {
+  router.push("/career2");
+}
+</script>
+<style scoped>
 .line {
   width: 100%;
   height: 4px;
