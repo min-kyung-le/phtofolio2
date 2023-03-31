@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Main.vue";
 import About from "@/components/About.vue";
+import Skill1 from "./components/Skill1.vue";
 
 const routes = [
   {
@@ -9,7 +10,7 @@ const routes = [
     component: Home,
     meta: {
       enterClass: "",
-      leaveClass: "animate__animated animate__fadeOutLeftBig",
+      leaveClass: "animate__animated animate__fadeOut",
     },
   },
   {
@@ -17,8 +18,17 @@ const routes = [
     name: "About",
     component: About,
     meta: {
-      enterClass: "animate__animated animate__fadeInRightBig",
-      leaveClass: "animate__animated animate__fadeOutLeftBig",
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
+  },
+  {
+    path: "/skill1",
+    name: "Skill1",
+    component: Skill1,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
     },
   },
 ];
