@@ -125,13 +125,4 @@ function closeCaptureImgs() {
   left: 0;
   padding: 150px 0 0 200px;
 }
-
-.close {
-  width: 80px;
-  position: absolute;
-  right: 360px;
-  top: 120px;
-  cursor: pointer;
-  z-index: 1;
-}
 </style>

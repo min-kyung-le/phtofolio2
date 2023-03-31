@@ -46,7 +46,7 @@
               <div
                 class="capture-btn"
                 @mouseover="captureTxt(1)"
-                @mouseleave="captureTxt(0)"
+                @mouseout="captureTxt(0)"
                 @click="captureClick()"
               >
                 <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
@@ -63,7 +63,7 @@
         class="next"
         :class="animated"
         @mouseover="hoverNext(1)"
-        @mouseleave="hoverNext(0)"
+        @mouseout="hoverNext(0)"
         @click="nextPage()"
         >NEXT</span
       >

@@ -30,7 +30,7 @@
           class="next"
           :class="animated"
           @mouseover="hoverNext(1)"
-          @mouseleave="hoverNext(0)"
+          @mouseout="hoverNext(0)"
           @click="nextPage()"
           >NEXT</span
         >

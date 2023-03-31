@@ -1,20 +1,21 @@
 <template>
   <div class="done page">
     <div v-if="menuShowValue" class="menu-contents">
-      <div class="close-div">
-        <v-icon
-          class="close-btn"
-          color="#fff"
-          size="47px"
-          @click="menuShow(false)"
-          >mdi-close</v-icon
-        >
+      <div
+        class="close"
+        @click="menuShow(false)"
+        @mouseover="closeAni(1)"
+        @mouseout="closeAni(0)"
+      >
+        <v-icon class="close-icon" size="60px" color="#fff">mdi-close</v-icon>
       </div>
       <div class="name-div">
         <div
           class="name"
           v-for="(one, idx) in menuList"
           @click="menuListClick(idx)"
+          @mouseover="menuHover(1)"
+          @mouseout="menuHover(0)"
         >
           {{ one.name }}
         </div>
@@ -112,6 +113,26 @@ function arrowAni() {
   );
 }
 
+let ani;
+function closeAni(num: number) {
+  if (num === 1) {
+    ani = gsap.to(".close-icon", {
+      rotation: 360,
+      transformOrigin: "50% 50%",
+      repeat: -1,
+      duration: 1,
+      ease: "Power2.easeInOut",
+      stagger: 0.5,
+      yoyo: true,
+    });
+  } else {
+    ani.kill();
+    gsap.set(".close-icon", {
+      rotation: 0,
+    });
+  }
+}
+
 const menuShowValue = ref(false);
 
 function menuListClick(number: number) {
@@ -185,7 +206,6 @@ function menuShow(isClick: boolean) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 90px;
 }
 
 .name-div {
@@ -200,15 +220,13 @@ function menuShow(isClick: boolean) {
   font-weight: 400;
 }
 
-.close-btn {
-  font-size: 40px;
-  height: 40px;
-  width: 40px;
-  color: rgb(255, 255, 255);
-  caret-color: rgb(255, 255, 255);
+.name-div {
   position: absolute;
+  left: 180px;
+}
+
+.close {
   right: 150px;
-  top: 50px;
-  cursor: pointer;
+  top: 80px;
 }
 </style>
