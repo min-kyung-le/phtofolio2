@@ -1,13 +1,13 @@
 <template>
-  <RouterLink to="/"><div>Main</div></RouterLink>
-  <RouterLink to="/about"><div>About</div></RouterLink>
   <RouterView v-slot="{ Component, route }">
-    <transition
+    <Transition
       :enter-active-class="route.meta.enterClass"
-      :leace-active-class="route.meta.leaveClass"
+      :leave-active-class="route.meta.leaveClass"
     >
-      <component :is="Component" />
-    </transition>
+      <div class="component-div">
+        <component :is="Component" />
+      </div>
+    </Transition>
   </RouterView>
 </template>
 
@@ -17,3 +17,13 @@ import Main from "@/components/Main.vue";
 
 import gsap from "gsap";
 </script>
+
+<style scoped>
+.component-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  justify-content: center;
+}
+</style>

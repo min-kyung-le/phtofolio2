@@ -5,6 +5,7 @@ import About from "@/components/About.vue";
 const routes = [
   {
     path: "/",
+    name: "Home",
     component: Home,
     meta: {
       enterClass: "animate__animated animate__fadeIn",
@@ -13,6 +14,7 @@ const routes = [
   },
   {
     path: "/about",
+    name: "About",
     component: About,
     meta: {
       enterClass: "animate__animated animate__fadeIn",

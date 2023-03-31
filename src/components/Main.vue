@@ -23,10 +23,16 @@
       <span class="arrow-down-span">
         <img
           class="arrow-img"
-          src="@/assets/images/arrow-down.png"
-          width="63"
-          height="190"
-        />
+          src="@/assets/images/arrow-right.png"
+          width="190"
+          height="63"
+        /><span
+          class="next"
+          :class="animated"
+          @mouseover="hoverNext(1)"
+          @mouseleave="hoverNext(0)"
+          >NEXT?</span
+        >
       </span>
       <span class="sub-info see-more">If you see more...</span>
     </div>
@@ -37,7 +43,7 @@
 <script setup lang="ts">
 import HomeLayout from "@/layout/HomeLayout.vue";
 
-import { watchEffect, onMounted, onBeforeUnmount } from "vue";
+import { watchEffect, onMounted, onBeforeUnmount, ref } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
 
@@ -74,7 +80,7 @@ function pageInAni() {
   };
 
   const arrowRepetAni = {
-    translateY: -70,
+    translateX: -70,
     repeat: 20,
     yoyo: true,
     duration: 0.4,
@@ -94,6 +100,14 @@ function pageInAni() {
     arrowRepetAni,
     ">"
   );
+}
+
+const animated = ref("");
+
+function hoverNext(num: number) {
+  console.log("hoverNext");
+  if (num > 0) animated.value = "animate__animated animate__rubberBand";
+  if (num < 1) animated.value = "";
 }
 </script>
 
@@ -125,22 +139,37 @@ function pageInAni() {
 }
 .sub-info-div {
   display: flex;
-  flex-direction: row;
-  height: 44vh;
+  flex-direction: column;
   align-items: self-end;
+  position: absolute;
+  right: 200px;
+  bottom: 100px;
 }
 
 .arrow-down-span {
-  padding-left: 40%;
   overflow: hidden;
 }
 
 .sub-info {
   font-weight: 700;
   font-size: 15px;
-  text-transform: uppercase;
   align-self: center;
-  margin-top: 80px;
+  margin-top: 20px;
+}
+
+.see-more {
+  position: absolute;
+  bottom: -15px;
+  left: -68px;
+}
+
+.next {
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: -120px;
+  bottom: 15px;
+  cursor: pointer;
 }
 
 .front-end {

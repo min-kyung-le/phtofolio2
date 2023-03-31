@@ -42,6 +42,7 @@ onMounted(() => {
   position: absolute;
   transform: translate(0px, -90px);
   left: 6%;
+  top: 0;
 }
 
 .line-circle {
@@ -49,6 +50,7 @@ onMounted(() => {
   left: 11%;
   transform: translate(0px, -90px);
   opacity: 1;
+  top: 0;
 }
 .b-circle {
   position: absolute;
