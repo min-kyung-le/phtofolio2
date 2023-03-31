@@ -32,7 +32,7 @@
           @mouseover="hoverNext(1)"
           @mouseleave="hoverNext(0)"
           @click="nextPage()"
-          >NEXT?</span
+          >NEXT</span
         >
       </span>
       <span class="sub-info see-more">If you see more...</span>
@@ -139,40 +139,6 @@ function nextPage() {
   font-size: 23px;
   text-transform: uppercase;
   font-family: "Source Sans Pro";
-}
-.sub-info-div {
-  display: flex;
-  flex-direction: column;
-  align-items: self-end;
-  position: absolute;
-  right: 200px;
-  bottom: 100px;
-}
-
-.arrow-down-span {
-  overflow: hidden;
-}
-
-.sub-info {
-  font-weight: 700;
-  font-size: 15px;
-  align-self: center;
-  margin-top: 20px;
-}
-
-.see-more {
-  position: absolute;
-  bottom: -15px;
-  left: -68px;
-}
-
-.next {
-  font-size: 30px;
-  font-weight: 700;
-  position: absolute;
-  right: -120px;
-  bottom: 15px;
-  cursor: pointer;
 }
 
 .front-end {

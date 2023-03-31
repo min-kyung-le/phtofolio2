@@ -1,23 +1,37 @@
 <template>
   <div class="page">
-    <div class="page-title">개요</div>
+    <div class="page-title title1">{{ title1 }}</div>
     <div class="page-detail">
       <p v-for="one in summary" class="sumtxt">
         {{ one.text }}
       </p>
     </div>
-    <div class="page-title page-title-2">핵심 강점</div>
+    <div class="page-title page-title-2 title2">{{ title2 }}</div>
     <div class="page-detail">
       <p v-for="one in strengths" class="strtxt">
         {{ one.text }}
       </p>
     </div>
+    <div class="sub-info-div">
+      <span
+        class="next"
+        :class="animated"
+        @mouseover="hoverNext(1)"
+        @mouseleave="hoverNext(0)"
+        @click="nextPage()"
+        >NEXT</span
+      >
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import gsap from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
+import router from "@/router";
+gsap.registerPlugin(TextPlugin);
+
 const summary = [
   { text: "총 3년 간의 개발 경력" },
   { text: "웹 개발 분야에서 주로 활동" },
@@ -35,15 +49,35 @@ const strengths = [
     text: "Gihub, Gitlab 실전 사용 경험으로 코드 형상 관리 시스템에 대한 깊은 이해",
   },
 ];
+
+const title1 = "개요";
+const title2 = "핵심 강점";
+
 const tl = gsap.timeline();
 
 onMounted(() => {
+  titleAni(1);
   summaryAni();
+  titleAni(2);
   strengthsAni();
 });
 
+function titleAni(num: number) {
+  tl.from(
+    `.title${num}`,
+    {
+      translateX: -50,
+      duration: 0.4,
+      opacity: 0,
+    },
+    "<0.2"
+  );
+}
+
 function summaryAni() {
+  let time = "<0.2";
   document.querySelectorAll(".sumtxt").forEach((e, idx) => {
+    if (idx > 0) time = "<0.1";
     tl.from(
       e,
       {
@@ -51,7 +85,7 @@ function summaryAni() {
         translateX: -60,
         duration: 0.5,
       },
-      "<0.1"
+      time
     );
   });
 }
@@ -69,9 +103,17 @@ function strengthsAni() {
     );
   });
 }
-</script>
-<style scoped>
-.page {
-  position: absolute;
+
+const animated = ref("");
+
+function hoverNext(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
 }
-</style>
+
+function nextPage() {
+  router.push("/skill1");
+}
+</script>
+<style scoped></style>
