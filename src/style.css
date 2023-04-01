@@ -228,16 +228,13 @@ h1 {
 }
 
 .career .line {
-  width: 1056px;
+  width: 1156px;
   height: 4px;
   background-color: #5e17eb;
   position: absolute;
   left: 0;
 }
 
-.career2 .line {
-  width: 1156px;
-}
 /* Career - end */
 
 .close {
