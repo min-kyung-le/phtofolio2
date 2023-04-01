@@ -1,18 +1,18 @@
 <template>
-  <div class="done page">
+  <div class="done page" v-resize="onResize">
     <v-expand-transition>
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     </v-expand-transition>
     <div class="menu-box">
       <span class="menu" @click="menuShow(true)"
-        ><v-icon size="35px">mdi-menu</v-icon></span
+        ><v-icon :size="iconSize">mdi-menu</v-icon></span
       >
       <span class="arrow-left-span">
         <img
           class="arrow-img"
           src="/images/arrow-left.png"
-          width="190"
-          height="63"
+          :width="arrowSize.w"
+          :height="arrowSize.h"
         />
       </span>
       <span class="sub-info see-more">If you see more...</span>
@@ -27,15 +27,39 @@
 <script setup lang="ts">
 import Menu from "./Menu.vue";
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, reactive } from "vue";
 import router from "@/router";
 import { useStore } from "vuex";
 
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
+import { useDisplay } from "vuetify";
 gsap.registerPlugin(TextPlugin);
 
 let tl = gsap.timeline();
+let arrowTransx = 70;
+const arrowSize = reactive({
+  w: 190,
+  h: 63,
+});
+const iconSize = ref("35px");
+const { name } = useDisplay();
+function onResize() {
+  switch (name.value) {
+    case "sm":
+      arrowTransx = 30;
+      arrowSize.w = 80;
+      arrowSize.h = 30;
+      iconSize.value = "25";
+      return;
+    case "xs":
+      arrowTransx = 30;
+      arrowSize.w = 80;
+      arrowSize.h = 30;
+      iconSize.value = "25";
+      return;
+  }
+}
 
 const store = useStore();
 onMounted(() => {
@@ -59,7 +83,7 @@ function titleAni(name: string, text: string) {
 
 function arrowAni() {
   const arrowRepetAni = {
-    translateX: 70,
+    translateX: arrowTransx,
     repeat: -1,
     yoyo: true,
     duration: 0.4,
@@ -104,20 +128,11 @@ function menuShow(isClick: boolean) {
   padding: 0 0 0 75px;
 }
 
-.menu {
-  margin: 0 50px 0 0;
-}
-
 .arrow-left-span {
   margin-right: 14px;
   height: 110px;
   align-items: center;
   display: flex;
   overflow-x: hidden;
-}
-.see-more {
-  top: 76%;
-  left: 12%;
-  text-transform: uppercase;
 }
 </style>

@@ -443,6 +443,16 @@ h1 {
   bottom: 140px;
 }
 
+.done .menu {
+  margin: 0 50px 0 0;
+}
+
+.done .see-more {
+  top: 76%;
+  left: 12%;
+  text-transform: uppercase;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -734,5 +744,28 @@ h1 {
   }
   .b-circle {
     right: 14%;
+  }
+
+  .done .title1,
+  .done .title2 {
+    font-size: 20px;
+  }
+
+  .done .menu-box {
+    left: 30px;
+    width: 500px;
+  }
+
+  .menu {
+    margin: 0 17px 0 0;
+  }
+
+  .done .see-more {
+    top: 51%;
+    left: 28%;
+  }
+
+  .done .info {
+    padding-top: 300px;
   }
 }
