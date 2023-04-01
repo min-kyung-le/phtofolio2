@@ -426,7 +426,7 @@ h1 {
   position: absolute;
   bottom: 33px;
   transform: translate(0px, 100px);
-  right: 19%;
+  right: 4%;
 }
 
 .b-line-circle-2 {
@@ -443,7 +443,7 @@ h1 {
 
 .contact .sub-info-div {
   right: 120px;
-  bottom: 140px;
+  bottom: 170px;
 }
 
 .done .menu {
@@ -667,7 +667,7 @@ h1 {
     font-size: 12px;
   }
   .contact {
-    padding: 81px 0 0 35px;
+    padding: 145px 0 0 47px;
   }
 
   .contact .page-detail {
@@ -790,5 +790,13 @@ h1 {
   }
   .main-div .sub-info-div {
     position: absolute;
+  }
+
+  .b-circle-2 {
+    bottom: 15px;
+    right: 19%;
+  }
+  .b-line-circle-2 {
+    bottom: 15px;
   }
 }
