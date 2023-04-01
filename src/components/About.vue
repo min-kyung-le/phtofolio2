@@ -8,7 +8,7 @@
         {{ one.text }}
       </p>
     </div>
-    <div class="title-div">
+    <div class="title-div title-div-2">
       <div class="page-title page-title-2 title2">{{ title2 }}</div>
     </div>
     <div class="page-detail">
@@ -181,9 +181,5 @@ function nextPage() {
 <style scoped>
 .about .menu-contents {
   top: 0;
-}
-
-.title2 {
-  height: 140px;
 }
 </style>

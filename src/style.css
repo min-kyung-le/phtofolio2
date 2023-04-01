@@ -388,6 +388,10 @@ h1 {
   right: 250px;
 }
 
+.title2 {
+  height: 140px;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -500,16 +504,28 @@ h1 {
 
 @media (max-width: 650px) {
   .title-div {
-    width: 400px;
+    width: 300px;
+    height: 80px;
   }
+  .title-div-2 {
+    height: 60px;
+  }
+
   .page-title {
     font-size: 15px;
   }
   .page-detail,
   .date-div {
-    width: 350px;
+    width: 300px;
     font-size: 12px;
+    margin-left: 0px;
+    margin-top: 16px;
   }
+
+  .title2 {
+    height: 50px;
+  }
+
   .career2 .date-div {
     width: 330px;
   }
@@ -584,5 +600,13 @@ h1 {
 
   .main-div .sub-info-div {
     right: 121px;
+  }
+
+  .sub-info-div {
+    right: 58px;
+    bottom: 83px;
+  }
+  .all-menu {
+    right: 88px;
   }
 }
