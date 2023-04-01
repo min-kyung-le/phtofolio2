@@ -157,7 +157,6 @@ h1 {
   flex-direction: row;
   align-items: center;
   height: 55px;
-  justify-content: space-between;
 }
 
 .graph .name {
@@ -229,15 +228,15 @@ h1 {
 }
 
 .career .line {
-  width: 967px;
+  width: 1056px;
   height: 4px;
   background-color: #5e17eb;
+  position: absolute;
+  left: 0;
 }
 
 .career2 .line {
   width: 1156px;
-  position: absolute;
-  left: 0;
 }
 /* Career - end */
 
@@ -280,6 +279,57 @@ h1 {
   padding: 70px 0 0 100px;
 }
 
+.end-right {
+  margin-left: 80px;
+}
+.end-right .cursor-icon {
+  margin-top: 15px;
+}
+
+.contact {
+  justify-content: center;
+  padding: 38px 0 0 0;
+}
+.contact .page-detail .line {
+  height: 46px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 17px;
+}
+
+.contact .center-box .name {
+  text-transform: uppercase;
+  margin: 0 20px 0 0;
+  width: 150px;
+}
+
+.done .info {
+  width: 400px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+  padding-top: 414px;
+  color: #000;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: "Source Sans Pro";
+}
+
+.done p {
+  margin: 0;
+}
+
+.menu-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  left: 60px;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -302,6 +352,25 @@ h1 {
   .img-grid {
     height: 580px;
   }
+  .skill .title-div,
+  .skill .page-detail {
+    width: 1340px;
+  }
+
+  .sub-content .graph {
+    height: 45px;
+  }
+
+  .skill .page-detail {
+    margin-top: -2px;
+  }
+  .skill .sub-title-2 {
+    margin: 23px 0 13px 0;
+  }
+
+  .done .info {
+    padding-top: 314px;
+  }
 }
 
 @media (max-width: 1264px) {
@@ -312,7 +381,7 @@ h1 {
     width: 950px;
   }
   .career .line {
-    width: 815px;
+    width: 927px;
   }
   .career2 .line {
     width: 942px;
@@ -326,6 +395,11 @@ h1 {
   .career2 .captureImgs {
     padding: 70px 0 0 30px;
   }
+
+  .skill .title-div,
+  .skill .page-detail {
+    width: 1040px;
+  }
 }
 
 @media (max-width: 960px) {
@@ -337,7 +411,7 @@ h1 {
     width: 670px;
   }
   .career .line {
-    width: 636px;
+    width: 786px;
   }
   .career2 .line {
     width: 545px;
@@ -358,6 +432,11 @@ h1 {
   .img-grid {
     width: 570px;
     height: 354px;
+  }
+
+  .skill .title-div,
+  .skill .page-detail {
+    width: 750px;
   }
 }
 
@@ -381,7 +460,7 @@ h1 {
     font-size: 20px;
   }
   .career .line {
-    width: 350px;
+    width: 450px;
   }
   .career2 .line {
     width: 469px;
@@ -394,5 +473,26 @@ h1 {
   }
   .end-right {
     margin-left: 0;
+  }
+  .contact .name {
+    width: 80px;
+  }
+
+  .contact .page-detail .line {
+    font-size: 12px;
+  }
+  .contact {
+    padding: 0px 0 0 45px;
+  }
+
+  .skill .title-div,
+  .skill .page-detail {
+    width: 550px;
+  }
+  .skill .sub-title-2 {
+    font-size: 12px;
+  }
+  .skill .sub-content .graph {
+    font-size: 12px;
   }
 }

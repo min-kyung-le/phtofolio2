@@ -1,5 +1,5 @@
 <template>
-  <div class="page" v-resize="onResize">
+  <div class="page skill" v-resize="onResize">
     <div class="title-div">
       <div class="page-title title1">사용 스킬</div>
     </div>
@@ -15,11 +15,11 @@
           <div class="text number">{{ one.value }}%</div>
           <div class="chart-div">
             <apexchart
+              :key="chartKey"
               :width="chartWidth"
               height="56"
               type="bar"
               :options="options"
-              :key="testKey"
               :series="series(one)"
             ></apexchart>
           </div>
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, reactive, computed } from "vue";
+import { ref, onMounted, reactive, nextTick } from "vue";
 import gsap from "gsap";
 import router from "@/router";
 import { useDisplay } from "vuetify";
@@ -113,14 +113,31 @@ function series(obj: any) {
 
 const { name } = useDisplay();
 const chartWidth = ref(1400);
-const testKey = ref(0);
+const chartKey = ref(0);
 
-function onResize() {
+async function onResize() {
+  await nextTick();
   switch (name.value) {
-    case "lg":
-      console.log("lg다");
     case "xl":
-      console.log("xl다");
+      chartWidth.value = 1400;
+      chartKey.value++;
+      return;
+    case "lg":
+      chartWidth.value = 1000;
+      chartKey.value++;
+      return;
+    case "md":
+      chartWidth.value = 800;
+      chartKey.value++;
+      return;
+    case "sm":
+      chartWidth.value = 500;
+      chartKey.value++;
+      return;
+    case "xs":
+      chartWidth.value = 300;
+      chartKey.value++;
+      return;
   }
 }
 
@@ -130,6 +147,7 @@ onMounted(() => {
   titleAni(".title1");
   subContentAni();
   nextAni();
+  onResize();
 });
 
 function titleAni(name: string) {

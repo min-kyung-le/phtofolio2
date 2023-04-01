@@ -174,31 +174,13 @@ function menuShow(isClick: boolean) {
   right: 120px;
   bottom: 140px;
 }
-.contact {
-  justify-content: center;
-  padding: 78px 0 0 0;
-}
 
 .contact .page-title {
   margin-bottom: 55px;
 }
 
-.page-detail .line {
-  height: 46px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 17px;
-}
-
 .icon {
   margin: 2px 16px 0 0;
-}
-
-.name {
-  text-transform: uppercase;
-  margin: 0 20px 0 0;
-  width: 150px;
 }
 
 .center-box {

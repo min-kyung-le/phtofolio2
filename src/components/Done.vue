@@ -104,14 +104,6 @@ function menuShow(isClick: boolean) {
   padding: 0 0 0 75px;
 }
 
-.menu-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: absolute;
-  left: 100px;
-}
-
 .menu {
   margin: 0 50px 0 0;
   cursor: pointer;
@@ -123,27 +115,6 @@ function menuShow(isClick: boolean) {
   align-items: center;
   display: flex;
   overflow-x: hidden;
-}
-.done .info {
-  width: 400px;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: center;
-  padding-top: 16%;
-}
-
-.done p {
-  margin: 0;
-}
-
-.info {
-  color: #000;
-  padding: 15px;
-  font-weight: 700;
-  font-size: 30px;
-  font-family: "Source Sans Pro";
 }
 .see-more {
   top: 76%;

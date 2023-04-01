@@ -260,14 +260,6 @@ function menuShow(isClick: boolean) {
 }
 </script>
 <style scoped>
-.end-right {
-  margin-left: 80px;
-}
-
-.end-right .cursor-icon {
-  margin-top: 15px;
-}
-
 .click-line {
   width: 120px;
   height: 3px;
