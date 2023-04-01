@@ -1,5 +1,5 @@
 <template>
-  <div class="page career">
+  <div class="page career career2">
     <div class="title-div">
       <div class="page-title title1">경력</div>
     </div>
@@ -105,7 +105,7 @@ const tl = gsap.timeline();
 onMounted(() => {
   titleAni(".title1");
   careerNameAni();
-  lineAni();
+  //lineAni();
   subContentAni();
   nextAni();
 });
@@ -260,14 +260,6 @@ function menuShow(isClick: boolean) {
 }
 </script>
 <style scoped>
-.line {
-  width: 1265px;
-  height: 4px;
-  background-color: #5e17eb;
-  position: absolute;
-  left: 0;
-}
-
 .end-right {
   margin-left: 80px;
 }

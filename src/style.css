@@ -227,6 +227,18 @@ h1 {
 .project-div .detail p {
   margin: 0 0 6px 0;
 }
+
+.career .line {
+  width: 967px;
+  height: 4px;
+  background-color: #5e17eb;
+}
+
+.career2 .line {
+  width: 1156px;
+  position: absolute;
+  left: 0;
+}
 /* Career - end */
 
 .close {
@@ -250,6 +262,24 @@ h1 {
   width: 1600px;
 }
 
+.img-grid {
+  background-color: #000;
+  width: 1470px;
+  height: 780px;
+  border-radius: 8px;
+  margin: 0 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.career2 .captureImgs {
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 70px 0 0 100px;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -257,6 +287,20 @@ h1 {
   }
   .page-detail {
     width: 1150px;
+  }
+
+  .date-div {
+    width: 967px;
+  }
+
+  .date-div {
+    width: 870px;
+  }
+  .career2 .line {
+    width: 1054px;
+  }
+  .img-grid {
+    height: 580px;
   }
 }
 
@@ -267,14 +311,53 @@ h1 {
   .page-detail {
     width: 950px;
   }
+  .career .line {
+    width: 815px;
+  }
+  .career2 .line {
+    width: 942px;
+  }
+  .date-div {
+    width: 789px;
+  }
+  .img-grid {
+    height: 453px;
+  }
+  .career2 .captureImgs {
+    padding: 70px 0 0 30px;
+  }
 }
 
 @media (max-width: 960px) {
   .title-div {
     width: 620px;
   }
-  .page-detail {
+  .page-detail,
+  .date-div {
     width: 670px;
+  }
+  .career .line {
+    width: 636px;
+  }
+  .career2 .line {
+    width: 545px;
+  }
+  .career2 .date-div {
+    width: 430px;
+  }
+  .project-div .right .detail {
+    font-size: 12px;
+    width: 250px;
+  }
+  .project-div .left .detail {
+    font-size: 12px;
+  }
+  .career2 .captureImgs {
+    padding: 70px 0 0 57px;
+  }
+  .img-grid {
+    width: 570px;
+    height: 354px;
   }
 }
 
@@ -285,12 +368,31 @@ h1 {
   .page-title {
     font-size: 15px;
   }
-  .page-detail {
-    width: 450px;
+  .page-detail,
+  .date-div {
+    width: 350px;
     font-size: 12px;
+  }
+  .career2 .date-div {
+    width: 330px;
   }
   .next,
   .all-menu {
     font-size: 20px;
+  }
+  .career .line {
+    width: 350px;
+  }
+  .career2 .line {
+    width: 469px;
+  }
+  .project-div {
+    flex-direction: column;
+  }
+  .project-div .left {
+    margin: 0 0 50px 0;
+  }
+  .end-right {
+    margin-left: 0;
   }
 }

@@ -60,6 +60,7 @@
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useDisplay } from "vuetify";
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
@@ -69,7 +70,7 @@ const tl = gsap.timeline();
 onMounted(() => {
   titleAni(".title1");
   careerNameAni();
-  lineAni();
+  // lineAni();
   subContentAni();
   nextAni();
 });
@@ -173,10 +174,4 @@ function nextPage() {
   router.push("/career2");
 }
 </script>
-<style scoped>
-.line {
-  width: 100%;
-  height: 4px;
-  background-color: #5e17eb;
-}
-</style>
+<style scoped></style>

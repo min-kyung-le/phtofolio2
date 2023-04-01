@@ -1,5 +1,5 @@
 <template>
-  <v-card class="page captureImgs">
+  <v-card class="page captureImgs" v-resize="onResize">
     <div
       class="close"
       @click="closeCaptureImgs()"
@@ -16,8 +16,8 @@
       <div class="img-grid">
         <img
           :src="`/src/assets/images/${imgNum.num}.png`"
-          width="1450"
-          height="760"
+          :width="imgwh.width"
+          :height="imgwh.height"
         />
       </div>
       <div class="icon" @click="click(1)">
@@ -31,6 +31,33 @@
 import { onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useDisplay } from "vuetify";
+
+const imgwh = reactive({
+  width: 1380,
+  height: 760,
+});
+const { name } = useDisplay();
+function onResize() {
+  switch (name.value) {
+    case "xl":
+      imgwh.width = 1380;
+      imgwh.height = 760;
+      return;
+    case "lg":
+      imgwh.width = 940;
+      imgwh.height = 550;
+      return;
+    case "md":
+      imgwh.width = 740;
+      imgwh.height = 420;
+      return;
+    case "sm":
+      imgwh.width = 520;
+      imgwh.height = 320;
+      return;
+  }
+}
 
 const imgNum = reactive({
   num: 1,
@@ -97,15 +124,6 @@ function closeCaptureImgs() {
 }
 </script>
 <style scoped>
-.img-grid {
-  padding: 10px 0 0 10px;
-  background-color: #000;
-  width: 1470px;
-  height: 780px;
-  border-radius: 8px;
-  margin: 0 40px;
-}
-
 .icon {
   height: 100%;
   display: flex;
@@ -119,13 +137,6 @@ function closeCaptureImgs() {
   display: flex;
   flex-direction: row;
   margin-top: 20px;
-}
-
-.captureImgs {
-  top: 0;
-  left: 0;
-  padding: 70px 0 0 100px;
-  position: absolute;
 }
 
 .close {
