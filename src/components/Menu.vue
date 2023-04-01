@@ -42,7 +42,7 @@ const menuList: Array<obj> = reactive([
     isClick: false,
   },
   {
-    name: "사용 기술",
+    name: "사용 스킬",
     isClick: false,
   },
   {

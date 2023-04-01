@@ -1,5 +1,21 @@
 <template>
   <div class="page skill" v-resize="onResize">
+    <div class="sample">
+      <div class="sample-text">
+        <span>|</span> <span>초급</span><span>|</span><span>중급</span
+        ><span>|</span><span>고급</span><span>|</span>
+      </div>
+      <div class="sample-text sample-text-2">
+        <span>0</span><span>-</span><span>40</span><span>-</span><span>80</span
+        ><span>-</span><span>100</span>
+      </div>
+      <div class="sample-text" style="font-size: 10px">
+        <span>|</span> <span style="opacity: 0">초급</span><span>|</span
+        ><span style="opacity: 0">중급</span><span>|</span
+        ><span style="opacity: 0">고급</span><span>|</span>
+      </div>
+      <div class="sample-graph"><div></div></div>
+    </div>
     <div class="title-div">
       <div class="page-title title1">사용 스킬</div>
     </div>

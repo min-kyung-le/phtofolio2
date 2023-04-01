@@ -330,6 +330,45 @@ h1 {
   left: 60px;
 }
 
+.sample {
+  width: 120px;
+  height: 150px;
+  position: absolute;
+  right: 160px;
+  top: 80px;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sample-text-2 > span {
+  padding: 0 5px;
+}
+.sample-text-2 > span:first-child {
+  padding: 0 5px 0 10px;
+}
+
+.sample-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 12px;
+}
+
+.sample-graph {
+  width: 112px;
+  height: 4px;
+  background-color: #000;
+  margin-left: 4px;
+}
+
+.sample-graph > div {
+  width: 80px;
+  height: 4px;
+  background-color: #5e17eb;
+  padding-left: 5px;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -494,5 +533,11 @@ h1 {
   }
   .skill .sub-content .graph {
     font-size: 12px;
+  }
+
+  .sample {
+    right: 60px;
+    top: 80px;
+    font-size: 9px;
   }
 }
