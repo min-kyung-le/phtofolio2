@@ -453,6 +453,12 @@ h1 {
   text-transform: uppercase;
 }
 
+.menu-contents .name {
+  color: #b3b3b3;
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -767,5 +773,13 @@ h1 {
 
   .done .info {
     padding-top: 300px;
+  }
+
+  .menu-contents .close {
+    right: 22px;
+  }
+  .menu-contents .name {
+    font-size: 30px;
+    margin-bottom: 15px;
   }
 }

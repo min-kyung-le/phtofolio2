@@ -1,12 +1,14 @@
 <template>
-  <v-card class="menu-contents" width="100%" height="100%">
+  <v-card class="menu-contents" width="100%" height="100%" v-resize="onResize">
     <div
       class="close"
       @click="closeMenu()"
       @mouseover="closeAni(1)"
       @mouseout="closeAni(0)"
     >
-      <v-icon class="close-icon" size="60px" color="#fff">mdi-close</v-icon>
+      <v-icon class="close-icon" :size="iconSize" color="#fff"
+        >mdi-close</v-icon
+      >
     </div>
     <div class="name-div">
       <div
@@ -24,10 +26,25 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, onUnmounted } from "vue";
+import { ref, reactive, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import router from "@/router";
 import { nextTick } from "process";
+import { useDisplay } from "vuetify/lib/framework.mjs";
+
+const iconSize = ref("50px");
+
+const { name } = useDisplay();
+function onResize() {
+  switch (name.value) {
+    case "sm":
+      iconSize.value = "30px";
+      return;
+    case "xs":
+      iconSize.value = "30px";
+      return;
+  }
+}
 
 onMounted(() => {
   nextTick(() => {
@@ -157,12 +174,6 @@ function closeMenu() {
   width: 360px;
 }
 
-.menu-contents .name {
-  color: #b3b3b3;
-  font-size: 60px;
-  font-weight: 400;
-  margin-bottom: 15px;
-}
 .select-text {
   color: #fff !important;
 }
