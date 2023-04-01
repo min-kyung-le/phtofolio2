@@ -157,6 +157,7 @@ h1 {
   flex-direction: row;
   align-items: center;
   height: 55px;
+  justify-content: space-between;
 }
 
 .graph .name {
@@ -246,13 +247,50 @@ h1 {
 }
 
 .page-detail {
-  width: 1550px;
+  width: 1600px;
 }
 
-/** 반응형 웹 
-@media (max-width: 1800px) {
-  .page {
-    padding: 
+/** 반응형 웹 */
+@media (max-width: 1904px) {
+  .title-div {
+    width: 1100px;
   }
+  .page-detail {
+    width: 1150px;
+  }
+}
 
-}*/
+@media (max-width: 1264px) {
+  .title-div {
+    width: 900px;
+  }
+  .page-detail {
+    width: 950px;
+  }
+}
+
+@media (max-width: 960px) {
+  .title-div {
+    width: 620px;
+  }
+  .page-detail {
+    width: 670px;
+  }
+}
+
+@media (max-width: 650px) {
+  .title-div {
+    width: 400px;
+  }
+  .page-title {
+    font-size: 15px;
+  }
+  .page-detail {
+    width: 450px;
+    font-size: 12px;
+  }
+  .next,
+  .all-menu {
+    font-size: 20px;
+  }
+}

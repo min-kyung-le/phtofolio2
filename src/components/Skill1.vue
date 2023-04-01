@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page" v-resize="onResize">
     <div class="title-div">
       <div class="page-title title1">사용 스킬</div>
     </div>
@@ -15,10 +15,11 @@
           <div class="text number">{{ one.value }}%</div>
           <div class="chart-div">
             <apexchart
-              width="1400"
+              :width="chartWidth"
               height="56"
               type="bar"
               :options="options"
+              :key="testKey"
               :series="series(one)"
             ></apexchart>
           </div>
@@ -39,9 +40,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, computed } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useDisplay } from "vuetify";
 
 interface skillobj {
   subTitle: String;
@@ -98,6 +100,29 @@ const skills: Array<skillobj> = [
     value: 84,
   },
 ];
+const skillsList = reactive(skills);
+
+function series(obj: any) {
+  return [
+    {
+      name: obj.name,
+      data: [obj.value],
+    },
+  ];
+}
+
+const { name } = useDisplay();
+const chartWidth = ref(1400);
+const testKey = ref(0);
+
+function onResize() {
+  switch (name.value) {
+    case "lg":
+      console.log("lg다");
+    case "xl":
+      console.log("xl다");
+  }
+}
 
 const tl = gsap.timeline();
 
@@ -159,8 +184,6 @@ function nextPage() {
   router.push("/skill2");
 }
 
-const skillsList = reactive(skills);
-
 const options = {
   chart: {
     id: "vuechart-example",
@@ -206,15 +229,6 @@ const options = {
     },
   },
 };
-
-function series(obj: any) {
-  return [
-    {
-      name: obj.name,
-      data: [obj.value],
-    },
-  ];
-}
 </script>
 
 <style scoped></style>

@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, reactive } from "vue";
+import { reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
 
