@@ -392,6 +392,10 @@ h1 {
 .title2 {
   height: 140px;
 }
+.btn-icon-div {
+  display: flex;
+  flex-direction: row;
+}
 
 /** 반응형 웹 */
 @media (max-width: 1904px) {
@@ -519,12 +523,18 @@ h1 {
   .page-title {
     font-size: 15px;
   }
-  .page-detail,
-  .date-div {
+  .page-detail {
     width: 300px;
     font-size: 12px;
     margin-left: 0px;
     margin-top: 16px;
+  }
+
+  .date-div {
+    width: 277px;
+    font-size: 12px;
+    margin-left: 0px;
+    margin-top: 0px;
   }
 
   .title2 {
@@ -532,24 +542,52 @@ h1 {
   }
 
   .career2 .date-div {
-    width: 330px;
+    width: 290px;
   }
   .next,
   .all-menu {
     font-size: 20px;
   }
   .career .line {
-    width: 450px;
+    width: 315px;
+    height: 3px;
   }
   .career2 .line {
-    width: 469px;
+    width: 315px;
   }
+  .career-name {
+    margin: 0;
+  }
+
+  .career .title-div {
+    margin-top: 40px;
+    width: 319px;
+  }
+
   .project-div {
     flex-direction: column;
   }
   .project-div .left {
-    margin: 0 0 50px 0;
+    margin: 0 0 20px 0;
   }
+
+  .project-div .right .detail {
+    margin: 0px 0px 20px 23px;
+  }
+
+  .career .page-detail {
+    padding-left: 0;
+    margin-left: -16px;
+  }
+
+  .btn-icon-div {
+    display: none;
+  }
+
+  .component-div .sub-info-div {
+    padding: 50px 0;
+  }
+
   .end-right {
     margin-left: 0;
   }

@@ -59,13 +59,11 @@ const { name } = useDisplay();
 function onResize() {
   switch (name.value) {
     case "sm":
-      console.log("1", name.value);
       arrowTransx = -30;
       arrowSize.w = 80;
       arrowSize.h = 30;
       return;
     case "xs":
-      console.log("2", name.value);
       arrowTransx = -30;
       arrowSize.w = 80;
       arrowSize.h = 30;

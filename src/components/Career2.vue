@@ -286,11 +286,6 @@ function menuShow(isClick: boolean) {
   flex-direction: column;
 }
 
-.btn-icon-div {
-  display: flex;
-  flex-direction: row;
-}
-
 .capture-btn {
   cursor: pointer;
 }
