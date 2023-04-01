@@ -23,7 +23,7 @@
       <span class="arrow-down-span">
         <img
           class="arrow-img"
-          src="@/assets/images/arrow-right.png"
+          src="/images/arrow-right.png"
           width="190"
           height="63"
         /><span

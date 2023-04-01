@@ -1,15 +1,15 @@
 <template>
   <span class="line-circle"
-    ><img src="@/assets/images/line-circle.png" width="170" height="170"
+    ><img src="/images/line-circle.png" width="170" height="170"
   /></span>
   <span class="circle"
-    ><img src="@/assets/images/circle.png" width="170" height="170"
+    ><img src="/images/circle.png" width="170" height="170"
   /></span>
   <span class="b-line-circle"
-    ><img src="@/assets/images/line-circle.png" width="170" height="170"
+    ><img src="/images/line-circle.png" width="170" height="170"
   /></span>
   <span class="b-circle"
-    ><img src="@/assets/images/circle.png" width="170" height="170"
+    ><img src="/images/circle.png" width="170" height="170"
   /></span>
 </template>
 

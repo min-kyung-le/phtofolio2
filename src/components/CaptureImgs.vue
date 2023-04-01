@@ -15,7 +15,7 @@
       </div>
       <div class="img-grid">
         <img
-          :src="`/src/assets/images/${imgNum.num}.png`"
+          :src="`/images/${imgNum.num}.png`"
           :width="imgwh.width"
           :height="imgwh.height"
         />

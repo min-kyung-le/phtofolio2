@@ -10,7 +10,7 @@
       <span class="arrow-left-span">
         <img
           class="arrow-img"
-          src="@/assets/images/arrow-left.png"
+          src="/images/arrow-left.png"
           width="190"
           height="63"
         />

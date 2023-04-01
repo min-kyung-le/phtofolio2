@@ -6,7 +6,7 @@
         <div class="line sub-content" v-for="one in list">
           <img
             class="icon"
-            :src="`/src/assets/images/${one.img}`"
+            :src="`/images/${one.img}`"
             width="27"
             height="27"
           />
