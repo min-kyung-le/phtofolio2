@@ -32,8 +32,8 @@
           <div class="chart-div">
             <apexchart
               :key="chartKey"
-              :width="chartWidth"
-              height="56"
+              :width="chartSize.w"
+              :height="chartSize.h"
               type="bar"
               :options="options"
               :series="series(one)"
@@ -119,7 +119,10 @@ const skills: Array<skillobj> = [
 ];
 
 const { name } = useDisplay();
-const chartWidth = ref(1400);
+const chartSize = reactive({
+  w: 1400,
+  h: 56,
+});
 const chartKey = ref(0);
 
 async function onResize() {
@@ -138,11 +141,13 @@ async function onResize() {
       chartKey.value++;
       return;
     case "sm":
-      chartWidth.value = 500;
+      chartSize.w = 500;
+      chartSize.h = 53;
       chartKey.value++;
       return;
     case "xs":
-      chartWidth.value = 300;
+      chartSize.w = 190;
+      chartSize.h = 53;
       chartKey.value++;
       return;
   }
