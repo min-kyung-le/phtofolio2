@@ -106,7 +106,6 @@ function menuShow(isClick: boolean) {
 
 .menu {
   margin: 0 50px 0 0;
-  cursor: pointer;
 }
 
 .arrow-left-span {
