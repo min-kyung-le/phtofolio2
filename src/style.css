@@ -60,6 +60,10 @@ h1 {
   }
 }
 
+.about .page-detail p {
+  margin-bottom: 12px;
+}
+
 .sub-info-div {
   display: flex;
   flex-direction: column;
