@@ -30,7 +30,6 @@
 <script lang="ts" setup>
 import { onMounted, reactive } from "vue";
 import gsap from "gsap";
-import router from "@/router";
 import { useDisplay } from "vuetify";
 
 const imgwh = reactive({
@@ -63,7 +62,7 @@ const imgNum = reactive({
   num: 1,
 });
 function click(number: number) {
-  const count = 3;
+  const count = 9;
   if (number > 0) {
     if (imgNum.num < count) {
       imgNum.num += 1;

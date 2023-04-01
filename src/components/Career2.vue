@@ -55,7 +55,9 @@
                 >캡쳐 화면
               </div>
             </div>
-            <v-icon class="cursor-icon">mdi-cursor-default-click</v-icon>
+            <v-icon class="cursor-icon chevron"
+              >mdi-cursor-default-click</v-icon
+            >
           </div>
         </div>
       </div>
@@ -108,7 +110,18 @@ onMounted(() => {
   //lineAni();
   subContentAni();
   nextAni();
+  chevronAni();
 });
+
+function chevronAni() {
+  tl.to(".chevron", {
+    translateX: -5,
+    translateY: -5,
+    duration: 0.4,
+    repeat: -1,
+    yoyo: true,
+  });
+}
 
 let time = "<0.2";
 function titleAni(name: string) {
