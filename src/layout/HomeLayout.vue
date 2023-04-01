@@ -63,41 +63,4 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-.circle {
-  position: absolute;
-  transform: translate(0px, -90px);
-  left: 6%;
-  top: 0;
-}
-
-.line-circle {
-  position: absolute;
-  left: 11%;
-  transform: translate(0px, -90px);
-  opacity: 1;
-  top: 0;
-}
-.b-circle {
-  position: absolute;
-  bottom: 0;
-  transform: translate(0px, 100px);
-  right: 6%;
-}
-
-.b-line-circle {
-  position: absolute;
-  bottom: 0;
-  transform: translate(0px, 100px);
-  right: -2%;
-}
-
-@media (max-width: 650px) {
-  .line-circle {
-    left: 21%;
-  }
-  .b-circle {
-    right: 14%;
-  }
-}
-</style>
+<style scoped></style>

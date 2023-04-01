@@ -397,6 +397,52 @@ h1 {
   flex-direction: row;
 }
 
+.circle {
+  position: absolute;
+  transform: translate(0px, -90px);
+  left: 6%;
+  top: 0;
+}
+
+.line-circle {
+  position: absolute;
+  left: 11%;
+  transform: translate(0px, -90px);
+  opacity: 1;
+  top: 0;
+}
+.b-circle {
+  position: absolute;
+  bottom: 0;
+  transform: translate(0px, 100px);
+  right: 6%;
+}
+.b-line-circle {
+  position: absolute;
+  bottom: 0;
+  transform: translate(0px, 100px);
+  right: -2%;
+}
+
+.b-circle-2 {
+  position: absolute;
+  bottom: 33px;
+  transform: translate(0px, 100px);
+  right: 19%;
+}
+
+.b-line-circle-2 {
+  position: absolute;
+  bottom: 32px;
+  transform: translate(0px, 100px);
+  right: -2%;
+}
+
+.contact .sub-info-div {
+  right: 120px;
+  bottom: 140px;
+}
+
 /** 반응형 웹 */
 @media (max-width: 1904px) {
   .title-div {
@@ -591,15 +637,26 @@ h1 {
   .end-right {
     margin-left: 0;
   }
-  .contact .name {
-    width: 80px;
+  .contact .center-box .name {
+    width: 50px;
+    margin: 0 10px 0 0;
+    font-size: 12px;
   }
 
   .contact .page-detail .line {
     font-size: 12px;
   }
   .contact {
-    padding: 0px 0 0 45px;
+    padding: 81px 0 0 35px;
+  }
+
+  .contact .page-detail {
+    width: 320px;
+  }
+
+  .contact .sub-info-div {
+    right: 25px;
+    bottom: 0;
   }
 
   .skill .title-div,
@@ -670,5 +727,12 @@ h1 {
   }
   .all-menu {
     right: 88px;
+  }
+
+  .line-circle {
+    left: 21%;
+  }
+  .b-circle {
+    right: 14%;
   }
 }

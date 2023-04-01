@@ -1,5 +1,5 @@
 <template>
-  <div class="page contact">
+  <div class="page contact" v-resize="onResize">
     <div class="center-box">
       <div class="page-title title1">연락처</div>
       <div class="page-detail">
@@ -48,6 +48,7 @@ import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
 import { useStore } from "vuex";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 const store = useStore();
 
 const tl = gsap.timeline();
@@ -80,6 +81,18 @@ const list: Array<obj> = reactive([
     link: "010-7319-0067",
   },
 ]);
+
+const { name } = useDisplay();
+function onResize() {
+  switch (name.value) {
+    case "sm":
+      list[1].name = "blog";
+      return;
+    case "xs":
+      list[1].name = "blog";
+      return;
+  }
+}
 
 const animated = ref("");
 
@@ -170,11 +183,6 @@ function menuShow(isClick: boolean) {
 }
 </script>
 <style scoped>
-.sub-info-div {
-  right: 120px;
-  bottom: 140px;
-}
-
 .contact .page-title {
   margin-bottom: 55px;
 }
