@@ -1,5 +1,5 @@
 <template>
-  <div class="main-div">
+  <div class="main-div" v-resize="onResize">
     <div class="title">
       <div class="hidden-div">
         <span class="front-end">front-end</span>
@@ -24,8 +24,8 @@
         <img
           class="arrow-img"
           src="/images/arrow-right.png"
-          width="190"
-          height="63"
+          :width="arrowSize.w"
+          :height="arrowSize.h"
         /><span
           class="next"
           :class="animated"
@@ -44,10 +44,34 @@
 <script setup lang="ts">
 import HomeLayout from "@/layout/HomeLayout.vue";
 
-import { watchEffect, onMounted, onBeforeUnmount, ref } from "vue";
+import { watchEffect, onMounted, reactive, ref } from "vue";
 import { useStore } from "vuex";
 import gsap from "gsap";
 import router from "@/router";
+import { useDisplay } from "vuetify";
+
+let arrowTransx = -70;
+const arrowSize = reactive({
+  w: 190,
+  h: 63,
+});
+const { name } = useDisplay();
+function onResize() {
+  switch (name.value) {
+    case "sm":
+      console.log("1", name.value);
+      arrowTransx = -30;
+      arrowSize.w = 80;
+      arrowSize.h = 30;
+      return;
+    case "xs":
+      console.log("2", name.value);
+      arrowTransx = -30;
+      arrowSize.w = 80;
+      arrowSize.h = 30;
+      return;
+  }
+}
 
 const store = useStore();
 
@@ -79,7 +103,7 @@ function pageInAni() {
   };
 
   const arrowRepetAni = {
-    translateX: -70,
+    translateX: arrowTransx,
     repeat: -1,
     yoyo: true,
     duration: 0.4,
@@ -116,22 +140,6 @@ function nextPage() {
 </script>
 
 <style scoped>
-.main-div {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: "Source Sans Pro";
-}
-.title {
-  width: 350px;
-  background-color: #000;
-  color: #fff;
-  padding: 9px 50px;
-  font-weight: 400;
-  font-size: 15px;
-}
-
 .info {
   color: #000;
   padding: 15px;
@@ -176,9 +184,5 @@ function nextPage() {
 .portfolio {
   transform: translate(0px, 0px);
   display: inline-block;
-}
-
-.sub-info-div {
-  right: 250px;
 }
 </style>
