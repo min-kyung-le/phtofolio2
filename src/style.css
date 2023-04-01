@@ -94,7 +94,6 @@ h1 {
   font-size: 30px;
   font-weight: 700;
   position: absolute;
-  cursor: pointer;
 }
 
 .all-menu {
@@ -246,7 +245,6 @@ h1 {
   position: absolute;
   right: 20%;
   top: 50px;
-  cursor: pointer;
   z-index: 1;
 }
 

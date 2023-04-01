@@ -24,9 +24,36 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { nextTick } from "process";
+
+onMounted(() => {
+  nextTick(() => {
+    mouseColorChange(true);
+  });
+});
+
+onUnmounted(() => {
+  mouseColorChange(false);
+});
+
+function mouseColorChange(val: boolean) {
+  if (val) {
+    document.querySelector(
+      "#drawing_line"
+    ).children[0].children[1].style.stroke = "#fff";
+    document.querySelector("#drawing_line").children[0].children[0].style.fill =
+      "#fff";
+  } else {
+    document.querySelector(
+      "#drawing_line"
+    ).children[0].children[1].style.stroke = "#000";
+    document.querySelector("#drawing_line").children[0].children[0].style.fill =
+      "#000";
+  }
+}
 
 interface obj {
   name: string;
@@ -133,7 +160,6 @@ function closeMenu() {
 .menu-contents .name {
   color: #b3b3b3;
   font-size: 60px;
-  cursor: pointer;
   font-weight: 400;
   margin-bottom: 15px;
 }

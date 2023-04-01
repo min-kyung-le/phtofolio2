@@ -60,7 +60,6 @@
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
-import { useDisplay } from "vuetify";
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
