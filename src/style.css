@@ -130,11 +130,6 @@ h1 {
   font-size: 15px;
 }
 
-.main-div .next {
-  right: -120px;
-  bottom: 15px;
-}
-
 .page-title {
   font-size: 25px;
   font-weight: 700;
@@ -386,7 +381,8 @@ h1 {
 }
 
 .main-div .sub-info-div {
-  right: 250px;
+  right: 216px;
+  bottom: 111px;
 }
 
 .title2 {
@@ -416,12 +412,14 @@ h1 {
   bottom: 0;
   transform: translate(0px, 100px);
   right: 6%;
+  bottom: 36px;
 }
 .b-line-circle {
   position: absolute;
   bottom: 0;
   transform: translate(0px, 100px);
   right: -2%;
+  bottom: 36px;
 }
 
 .b-circle-2 {
@@ -436,6 +434,11 @@ h1 {
   bottom: 32px;
   transform: translate(0px, 100px);
   right: -2%;
+}
+
+.main-div .next {
+  margin-left: 30px;
+  margin-top: 7px;
 }
 
 .contact .sub-info-div {
@@ -571,6 +574,7 @@ h1 {
 
 @media (max-width: 650px) {
   :root {
+    overflow-x: hidden;
     overflow-y: auto;
   }
 
@@ -713,23 +717,13 @@ h1 {
     height: 28px;
   }
 
-  .main-div .next {
-    right: -68px;
-    bottom: 3px;
-  }
-
   .info {
     font-size: 15px;
   }
 
-  .see-more {
-    bottom: -11px;
-    left: -78px;
-    font-size: 12px;
-  }
-
   .main-div .sub-info-div {
-    right: 121px;
+    right: 97px;
+    bottom: 10px;
   }
 
   .sub-info-div {
@@ -749,7 +743,7 @@ h1 {
     left: 21%;
   }
   .b-circle {
-    right: 14%;
+    right: 18%;
   }
 
   .done .title1,
@@ -781,5 +775,20 @@ h1 {
   .menu-contents .name {
     font-size: 30px;
     margin-bottom: 15px;
+  }
+
+  .main-div .next {
+    margin-left: 11px;
+    margin-top: 2px;
+  }
+
+  .main-div .see-more {
+    position: unset;
+    margin-top: -8px;
+    margin-right: -51px;
+    font-size: 12px;
+  }
+  .main-div .sub-info-div {
+    position: absolute;
   }
 }

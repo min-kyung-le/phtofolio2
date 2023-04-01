@@ -129,15 +129,15 @@ async function onResize() {
   await nextTick();
   switch (name.value) {
     case "xl":
-      chartWidth.value = 1400;
+      chartSize.w = 1400;
       chartKey.value++;
       return;
     case "lg":
-      chartWidth.value = 1000;
+      chartSize.w = 1000;
       chartKey.value++;
       return;
     case "md":
-      chartWidth.value = 800;
+      chartSize.w = 800;
       chartKey.value++;
       return;
     case "sm":
