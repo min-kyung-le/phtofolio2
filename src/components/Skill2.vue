@@ -94,7 +94,7 @@ const skills: Array<skillobj> = [
   {
     subTitle: "",
     name: "MySQL",
-    value: 60,
+    value: 68,
   },
   {
     subTitle: "Git",
@@ -109,12 +109,12 @@ const skills: Array<skillobj> = [
   {
     subTitle: "Backend Framwork",
     name: "Spring",
-    value: 75,
+    value: 74,
   },
   {
     subTitle: "",
     name: "Spring Boot",
-    value: 71,
+    value: 70,
   },
 ];
 

@@ -73,7 +73,7 @@ const skills: Array<skillobj> = [
   {
     subTitle: "Language",
     name: "JavaScript(ES6)",
-    value: 86,
+    value: 92,
   },
   {
     subTitle: "",
@@ -108,7 +108,7 @@ const skills: Array<skillobj> = [
   {
     subTitle: "",
     name: "jQuery",
-    value: 81,
+    value: 89,
   },
   {
     subTitle: "Style sheet",
