@@ -27,9 +27,12 @@
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
             >기여한 점
             <div class="detail">
-              <p>Vue를 통한 UI/UX 기능 구현</p>
-              <p>각 브라우저 호환성을 고려한 인터페이스 개발</p>
-              <p>ApexChart 라이브러리를 활용한 데이터 시각화</p>
+              <p>Vue를 통한 프론트엔드 개발</p>
+              <p>
+                반응형 웹 사이트 구현 및 웹 표준을 준수하여 크로스 브라우징 이슈
+                고려한 개발
+              </p>
+              <p>무료 ApexChart 라이브러리를 활용한 데이터 시각화</p>
               <p>프론트엔드 개발자를 위한 API 가이드 작성</p>
             </div>
           </div>

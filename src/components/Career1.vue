@@ -36,8 +36,8 @@
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
             >사용 툴 (언어, 기술)
             <div class="detail">
-              <p>Javascript, JQuery, CanvasJS, CSS</p>
-              <p>Java, Spring, Oracle</p>
+              <p>Javascript, JQuery, CanvasJS</p>
+              <p>Java 8, Spring Framwork, Oracle</p>
             </div>
           </div>
         </div>

@@ -53,23 +53,23 @@ const store = useStore();
 gsap.registerPlugin(TextPlugin);
 
 const summary = [
-  { text: "총 3년 3개월의 개발 경력" },
+  { text: "총 3년 3개월의 Full Stack 개발 경력" },
   {
-    text: "삼성 IT자산 생애관리 시스템 개발, 현대카드 마이데이터 대시보드 시스템 개발",
+    text: "삼성 IT자산 생애관리 시스템 개발(JS), 현대카드 마이데이터 대시보드 시스템 개발(Vue)",
   },
   { text: "애자일 방법론을 적극적으로 활용한 빠른 서비스 개발 능력 보유" },
   { text: "다수의 파견 경험으로 안정적이고 원활한 커뮤니케이션 능력 보유" },
 ];
 
 const strengths = [
-  {
-    text: "Java 8 이상, Spring Framwork, Spring Cloud, MySql 등에 관한 깊은 이해도 보유",
-  },
+  { text: "Javascript(ES6), Vue, Vuetify 등 Frontend 개발에 특화된 기술력" },
+  { text: "Apexchart, Chart, Canvas, Gsap, Animation 등 라이브러리 스킬 능숙" },
   {
     text: "Gihub, Gitlab 실전 사용 경험으로 코드 형상 관리 시스템에 대한 깊은 이해",
   },
-  { text: "Apexchart, Chart, Canvas, Gsap, Animation 등 라이브러리 스킬 능숙" },
-  { text: "Javascript(ES6), Vue, Vuetify 등 Frontend 개발에 특화된 기술력" },
+  {
+    text: "Java 8 이상, Spring Framwork, Spring Cloud, MySql 등에 관한 깊은 이해도 보유",
+  },
 ];
 
 const title1 = "개요";
