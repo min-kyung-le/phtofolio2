@@ -1,6 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Main from "./components/Main.vue";
 import About from "./components/About.vue";
+import Grid from "./components/Grid.vue";
+import Diagram from "./components/Diagram.vue";
+import Chart from "./components/Chart.vue";
 import Skill1 from "./components/Skill1.vue";
 import Skill2 from "./components/Skill2.vue";
 import Career1 from "./components/Career1.vue";
@@ -23,6 +26,33 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
+  },
+  {
+    path: "/grid",
+    name: "Grid",
+    component: Grid,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
+  },
+  {
+    path: "/diagram",
+    name: "diagram",
+    component: Diagram,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
+  },
+  {
+    path: "/chart",
+    name: "Chart",
+    component: Chart,
     meta: {
       enterClass: "animate__animated animate__fadeIn",
       leaveClass: "animate__animated animate__fadeOut",

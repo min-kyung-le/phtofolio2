@@ -1,20 +1,38 @@
 <template>
   <div class="page about">
-    <div class="title-div">
-      <div class="page-title title1">{{ title1 }}</div>
+    <div class="about-title">
+      <div class="title1">{{ title1 }}</div>
     </div>
-    <div class="page-detail">
+    <div class="detail">
       <p v-for="one in summary" class="sumtxt">
         {{ one.text }}
       </p>
     </div>
-    <div class="title-div title-div-2">
-      <div class="page-title page-title-2 title2">{{ title2 }}</div>
-    </div>
-    <div class="page-detail">
-      <p v-for="one in strengths" class="strtxt">
-        {{ one.text }}
-      </p>
+    <div class="keywords">
+      <span
+        class="key"
+        :class="(keywords[0].link, animated_grid)"
+        @mouseover="hoverKeywords(1, keywords[0].link)"
+        @mouseout="hoverKeywords(0, keywords[0].link)"
+        @click="clickKeywords(keywords[0].link)"
+        >{{ keywords[0].text }}</span
+      >
+      <span
+        class="key"
+        :class="(keywords[1].link, animated_diagram)"
+        @mouseover="hoverKeywords(1, keywords[1].link)"
+        @mouseout="hoverKeywords(0, keywords[1].link)"
+        @click="clickKeywords(keywords[1].link)"
+        >{{ keywords[1].text }}</span
+      >
+      <span
+        class="key"
+        :class="(keywords[2].link, animated_chart)"
+        @mouseover="hoverKeywords(1, keywords[2].link)"
+        @mouseout="hoverKeywords(0, keywords[2].link)"
+        @click="clickKeywords(keywords[2].link)"
+        >{{ keywords[2].text }}</span
+      >
     </div>
     <div class="sub-info-div">
       <span
@@ -53,37 +71,46 @@ const store = useStore();
 gsap.registerPlugin(TextPlugin);
 
 const summary = [
-  { text: "총 3년 3개월의 Full Stack 개발 경력" },
   {
     text: "삼성 IT자산 생애관리 시스템 개발(JS), 현대카드 마이데이터 대시보드 시스템 개발(Vue)",
   },
-  { text: "애자일 방법론을 적극적으로 활용한 빠른 서비스 개발 능력 보유" },
-  { text: "다수의 파견 경험으로 안정적이고 원활한 커뮤니케이션 능력 보유" },
-];
-
-const strengths = [
-  { text: "Javascript(ES6), Vue, Vuetify 등 Frontend 개발에 특화된 기술력" },
-  { text: "Apexchart, Chart, Canvas, Gsap, Animation 등 라이브러리 스킬 능숙" },
   {
-    text: "Gihub, Gitlab 실전 사용 경험으로 코드 형상 관리 시스템에 대한 깊은 이해",
+    text: "Javascript(ES6), Vue, Vuetify 등 Frontend 개발에 특화된 기술력, Gihub, Gitlab 실전 사용 경험으로 코드 형상 관리 시스템에 대한 깊은 이해",
   },
+  { text: "Apexchart, Chart, Canvas, Gsap, Animation 등 라이브러리 스킬 능숙" },
   {
     text: "Java 8 이상, Spring Framwork, Spring Cloud, MySql 등에 관한 깊은 이해도 보유",
   },
 ];
 
-const title1 = "개요";
-const title2 = "핵심 강점";
+const keywords = [
+  {
+    text: "# 그리드 활용",
+    link: "grid",
+  },
+  {
+    text: "# 다이어그램 활용",
+    link: "diagram",
+  },
+  {
+    text: "# 차트 활용",
+    link: "chart",
+  },
+];
+
+const title1 = "87%";
 
 const tl = gsap.timeline();
 
 onMounted(() => {
   titleAni(1);
   summaryAni();
-  titleAni(2);
-  strengthsAni();
   nextAni();
 });
+
+function clickKeywords(key: string) {
+  router.push("/" + key);
+}
 
 function nextAni() {
   let time = "<0.7";
@@ -125,6 +152,23 @@ function titleAni(num: number) {
   );
 }
 
+const animated_grid = ref("");
+const animated_diagram = ref("");
+const animated_chart = ref("");
+
+function hoverKeywords(num: number, key: String) {
+  let animate_class = "animate__animated animate__rubberBand";
+  if (key == "grid") {
+    animated_grid.value = num == 1 ? animate_class : "";
+  }
+  if (key == "diagram") {
+    animated_diagram.value = num == 1 ? animate_class : "";
+  }
+  if (key == "chart") {
+    animated_chart.value = num == 1 ? animate_class : "";
+  }
+}
+
 function summaryAni() {
   let time = "<0.2";
   document.querySelectorAll(".sumtxt").forEach((e, idx) => {
@@ -141,26 +185,11 @@ function summaryAni() {
   });
 }
 
-function strengthsAni() {
-  document.querySelectorAll(".strtxt").forEach((e, idx) => {
-    tl.from(
-      e,
-      {
-        opacity: 0,
-        translateX: -60,
-        duration: 0.5,
-      },
-      "<0.1"
-    );
-  });
-}
-
 const animated_menu = ref("");
 
 function hoverAllMenu(num: number) {
-  const animate_class = "animate__animated animate__rubberBand";
-  if (num === 1) animated_menu.value = animate_class;
-  if (num === 0) animated_menu.value = "";
+  let animate_class = "animate__animated animate__rubberBand";
+  animated_menu.value = num == 1 ? animate_class : "";
 }
 
 const menuShowValue = ref(false);
@@ -171,9 +200,8 @@ function menuShow(isClick: boolean) {
 const animated = ref("");
 
 function hoverNext(num: number) {
-  const animate_class = "animate__animated animate__rubberBand";
-  if (num === 1) animated.value = animate_class;
-  if (num === 0) animated.value = "";
+  let animate_class = "animate__animated animate__rubberBand";
+  animated.value = num == 1 ? animate_class : "";
 }
 
 function nextPage() {
@@ -183,5 +211,39 @@ function nextPage() {
 <style scoped>
 .about .menu-contents {
   top: 0;
+}
+.about-title {
+  display: flex;
+  height: 300px;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+.about-title .title1 {
+  font-weight: 100;
+  font-size: 125px;
+  margin-top: 95px;
+}
+.about .detail {
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+.about .detail p {
+  margin-bottom: 8px;
+}
+.keywords {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.keywords p {
+  margin-right: 20px;
 }
 </style>
