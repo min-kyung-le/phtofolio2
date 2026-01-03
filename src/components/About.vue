@@ -8,6 +8,9 @@
         {{ one.text }}
       </p>
     </div>
+    <v-dialog v-model="gridModelValue" max-width="800">
+      <Grid @modelValue="gridClose"
+    /></v-dialog>
     <div class="keywords">
       <span
         class="key"
@@ -57,9 +60,6 @@
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     </v-expand-transition>
   </div>
-  <v-dialog v-model="gridModelValue" max-width="800" persistent>
-    <Grid @modelValue="gridClose"
-  /></v-dialog>
 </template>
 
 <script lang="ts" setup>
@@ -257,5 +257,8 @@ function nextPage() {
 }
 .keywords p {
   margin-right: 20px;
+}
+.page {
+  position: unset;
 }
 </style>

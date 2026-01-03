@@ -1,8 +1,7 @@
 <template>
   <div class="page about">
     <div class="about-title">
-      <div class="title1">Chart</div>
-      <v-spacer></v-spacer>
+      <div class="title1">Grid</div>
       <v-btn icon @click="close">
         <v-icon icon="mdi-close" />
       </v-btn>
@@ -78,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 import ParameterDetailToolbar from "./ParameterDetailToolbar.vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
@@ -180,7 +179,7 @@ function nextPage(value: boolean) {
 <style scoped>
 .about-title {
   width: 100%;
-  padding: 50px 0 0 40px;
+  padding: 50px 40px 0 40px;
   display: flex;
   justify-content: space-between;
 }
