@@ -57,10 +57,14 @@
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     </v-expand-transition>
   </div>
+  <v-dialog v-model="gridModelValue" max-width="800" persistent>
+    <Grid @modelValue="gridClose"
+  /></v-dialog>
 </template>
 
 <script lang="ts" setup>
 import Menu from "./Menu.vue";
+import Grid from "./Grid.vue";
 
 import { ref, onMounted } from "vue";
 import gsap from "gsap";
@@ -108,8 +112,16 @@ onMounted(() => {
   nextAni();
 });
 
+const gridModelValue = ref(false);
+function gridClose(val: boolean) {
+  console.log("gridClose 클릭", val);
+  gridModelValue.value = val;
+}
+
 function clickKeywords(key: string) {
-  router.push("/" + key);
+  // router.push("/" + key);
+  console.log(key);
+  if (key == "grid") gridModelValue.value = true;
 }
 
 function nextAni() {

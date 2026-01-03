@@ -3,14 +3,32 @@
     <div class="about-title">
       <div class="title1">Chart</div>
     </div>
+    <v-container fluid>
+      <v-row>
+        <v-col cols="1" md="1"></v-col>
+        <v-col cols="10" md="10">
+          <v-card>
+            <v-card-title>Equipment Parameter Chart</v-card-title>
 
+            <v-card-text>
+              <apexchart
+                type="line"
+                height="420"
+                :options="chartOptions"
+                :series="chartSeries"
+              />
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
     <div class="sub-info-div">
       <span
         class="next"
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
       >
       <span
@@ -19,8 +37,8 @@
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
-        @click="menuShow(true)"
-        >MENU</span
+        @click="nextPage(false)"
+        >PREV</span
       >
     </div>
     <v-expand-transition>
@@ -32,7 +50,7 @@
 <script lang="ts" setup>
 import Menu from "./Menu.vue";
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
@@ -44,6 +62,70 @@ onMounted(() => {
   titleAni(1);
   nextAni();
 });
+
+/**
+ * 파라미터 타입
+ */
+interface Parameter {
+  id: number;
+  name: string;
+  value: number;
+  history: number[];
+}
+
+/**
+ * 더미 데이터 (설비 1대 기준)
+ */
+const parameters: Parameter[] = [
+  { id: 1, name: "TEMP", value: 80, history: [70, 75, 178, 140] },
+  { id: 2, name: "PRESS", value: 120, history: [100, 110, 315, 180] },
+  { id: 3, name: "SPEED", value: 3000, history: [280, 290, 295, 200] },
+];
+
+/**
+ * 상태 계산 (프론트 기준)
+ */
+function getStatus(value: number) {
+  if (value > 2000) return "ERROR";
+  if (value > 100) return "WARNING";
+  return "NORMAL";
+}
+
+/**
+ * 선택된 파라미터
+ */
+const selectedParameter = ref<any>(null);
+
+/**
+ * 차트 옵션
+ */
+const chartOptions = computed(() => ({
+  chart: {
+    toolbar: { show: false },
+  },
+  xaxis: {
+    categories: ["T-30", "T-20", "T-10", "NOW"],
+  },
+  stroke: {
+    width: 2,
+  },
+  markers: {
+    size: 4,
+  },
+  tooltip: {
+    shared: true,
+  },
+}));
+
+/**
+ * 차트 데이터 (Line)
+ */
+const chartSeries = computed(() =>
+  parameters.map((p) => ({
+    name: p.name,
+    data: p.history,
+  }))
+);
 
 const tl = gsap.timeline();
 
@@ -106,8 +188,12 @@ function hoverNext(num: number) {
   animated.value = num == 1 ? animate_class : "";
 }
 
-function nextPage() {
-  router.push("/skill1");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/skill1");
+  } else {
+    router.push("/about");
+  }
 }
 </script>
 <style scoped>
@@ -115,15 +201,12 @@ function nextPage() {
   top: 0;
 }
 .about-title {
-  display: flex;
-  height: 300px;
-  align-content: space-around;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  padding: 50px 0 0 40px;
 }
-.about-title .title1 {
-  font-weight: 100;
-  font-size: 125px;
-  margin-top: 95px;
+.about .about-title .title1 {
+  font-size: 25px;
+  display: flex;
+  justify-content: flex-start;
 }
 </style>
