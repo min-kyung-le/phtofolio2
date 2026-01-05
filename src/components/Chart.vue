@@ -5,11 +5,11 @@
       <v-btn icon @click="close">
         <v-icon icon="mdi-close" />
       </v-btn>
-      <div class="detail">
-        단일 설비의 파라미터 데이터를 차트로 시각화한 화면의 예시로, 시간에 따른
-        변화 추이를 통해 설비 상태를 직관적으로 파악할 수 있도록 구성된
-        화면입니다.
-      </div>
+    </div>
+    <div class="detail">
+      단일 설비의 파라미터 데이터를 차트로 시각화한 화면의 예시로, 시간에 따른
+      변화 추이를 통해 설비 상태를 직관적으로 파악할 수 있도록 구성된
+      화면입니다.
     </div>
     <v-container fluid>
       <v-row>
