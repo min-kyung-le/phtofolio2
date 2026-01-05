@@ -46,7 +46,7 @@
           </v-card>
         </v-col>
       </v-row>
-      <div class="sub-info-div">
+      <!-- <div class="sub-info-div">
         <span
           class="next"
           :class="animated"
@@ -64,7 +64,7 @@
           @click="nextPage(false)"
           >PREV</span
         >
-      </div>
+      </div> -->
       <v-expand-transition location="right" width="360" temporary>
         <ParameterDetailToolbar
           v-if="drawer"
@@ -93,7 +93,7 @@ const selectedParam = ref<any>(null);
 const emit = defineEmits(["modelValue"]);
 
 function close() {
-  emit("modelValue", false);
+  emit("modelValue", "grid", false);
 }
 const headers = [
   { title: "Name", key: "name" },
@@ -177,9 +177,11 @@ function nextPage(value: boolean) {
 }
 </script>
 <style scoped>
+.page {
+  padding: 50px 40px 0 40px;
+}
 .about-title {
   width: 100%;
-  padding: 50px 40px 0 40px;
   display: flex;
   justify-content: space-between;
 }

@@ -2,10 +2,13 @@
   <div class="page about">
     <div class="about-title">
       <div class="title1">Diagram</div>
+      <v-btn icon @click="close">
+        <v-icon icon="mdi-close" />
+      </v-btn>
     </div>
     <div class="detail">{{ comment }}</div>
     <div ref="diagramDiv" style="width: 100%; height: 600px"></div>
-    <div class="sub-info-div">
+    <!-- <div class="sub-info-div">
       <span
         class="next"
         :class="animated"
@@ -23,7 +26,7 @@
         @click="nextPage(false)"
         >PREV</span
       >
-    </div>
+    </div> -->
     <v-expand-transition>
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
       <DiagramDetail v-if="drawer" :param="selectedParam" />
@@ -35,7 +38,7 @@
 import Menu from "./Menu.vue";
 import DiagramDetail from "./DiagramDetail.vue";
 import * as go from "gojs";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
@@ -44,7 +47,7 @@ import { useStore } from "vuex";
 const store = useStore();
 gsap.registerPlugin(TextPlugin);
 
-const emit = defineEmits(["selectParameter"]);
+const emit = defineEmits(["selectParameter", "modelValue"]);
 const diagramDiv = ref<HTMLDivElement | null>(null);
 
 const getParamStyle = (status: string) => {
@@ -58,6 +61,9 @@ const getParamStyle = (status: string) => {
   }
 };
 
+function close() {
+  emit("modelValue", "diagram", false);
+}
 const drawer = ref(false);
 const selectedParam = ref<any>(null);
 
@@ -266,11 +272,15 @@ function nextPage(value: boolean) {
 }
 .about-title {
   width: 100%;
-  padding: 50px 0 0 40px;
+  display: flex;
+  justify-content: space-between;
 }
 .about .about-title .title1 {
   font-size: 25px;
   display: flex;
   justify-content: flex-start;
+}
+.v-overlay__content {
+  top: unset;
 }
 </style>

@@ -2,6 +2,9 @@
   <div class="page about">
     <div class="about-title">
       <div class="title1">Chart</div>
+      <v-btn icon @click="close">
+        <v-icon icon="mdi-close" />
+      </v-btn>
     </div>
     <v-container fluid>
       <v-row>
@@ -22,7 +25,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <div class="sub-info-div">
+    <!-- <div class="sub-info-div">
       <span
         class="next"
         :class="animated"
@@ -40,7 +43,7 @@
         @click="nextPage(false)"
         >PREV</span
       >
-    </div>
+    </div> -->
     <v-expand-transition>
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     </v-expand-transition>
@@ -63,6 +66,10 @@ onMounted(() => {
   nextAni();
 });
 
+const emit = defineEmits(["modelValue"]);
+function close() {
+  emit("modelValue", "chart", false);
+}
 /**
  * 파라미터 타입
  */
@@ -200,9 +207,13 @@ function nextPage(value: boolean) {
 .about .menu-contents {
   top: 0;
 }
+.page {
+  padding: 50px 40px 0 40px;
+}
 .about-title {
   width: 100%;
-  padding: 50px 0 0 40px;
+  display: flex;
+  justify-content: space-between;
 }
 .about .about-title .title1 {
   font-size: 25px;

@@ -8,8 +8,14 @@
         {{ one.text }}
       </p>
     </div>
-    <v-dialog v-model="gridModelValue" max-width="800">
-      <Grid @modelValue="gridClose"
+    <v-dialog v-model="modalOpen.grid" max-width="800">
+      <Grid @modelValue="modelClose"
+    /></v-dialog>
+    <v-dialog v-model="modalOpen.diagram" max-width="800">
+      <Diagram @modelValue="modelClose"
+    /></v-dialog>
+    <v-dialog v-model="modalOpen.chart" max-width="800">
+      <Chart @modelValue="modelClose"
     /></v-dialog>
     <div class="keywords">
       <span
@@ -65,8 +71,10 @@
 <script lang="ts" setup>
 import Menu from "./Menu.vue";
 import Grid from "./Grid.vue";
+import Diagram from "./Diagram.vue";
+import Chart from "./Chart.vue";
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
@@ -112,16 +120,24 @@ onMounted(() => {
   nextAni();
 });
 
-const gridModelValue = ref(false);
-function gridClose(val: boolean) {
-  console.log("gridClose 클릭", val);
-  gridModelValue.value = val;
+// const modalOpen = ref(false);
+type ModalKey = "grid" | "diagram" | "chart";
+
+const modalOpen = reactive({
+  grid: false,
+  diagram: false,
+  chart: false,
+});
+
+function modelClose(name: ModalKey, val: boolean) {
+  console.log("gridClose 클릭", name, val);
+  modalOpen[name] = val;
 }
 
-function clickKeywords(key: string) {
+function clickKeywords(key: ModalKey) {
   // router.push("/" + key);
   console.log(key);
-  if (key == "grid") gridModelValue.value = true;
+  modalOpen[key] = true;
 }
 
 function nextAni() {
