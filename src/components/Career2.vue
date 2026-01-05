@@ -71,16 +71,17 @@
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
-      ><span
+      >
+      <span
         v-if="store.state.isMenuShow"
         class="all-menu"
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
-        @click="menuShow(true)"
-        >MENU</span
+        @click="nextPage(false)"
+        >PREV</span
       >
     </div>
     <v-expand-transition>
@@ -258,8 +259,12 @@ function hoverNext(num: number) {
   if (num === 0) animated.value = "";
 }
 
-function nextPage() {
-  router.push("/contact");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/contact");
+  } else {
+    router.push("/career1");
+  }
 }
 
 const animated_menu = ref("");

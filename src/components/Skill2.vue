@@ -48,7 +48,7 @@
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
       >
       <span
@@ -57,8 +57,8 @@
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
-        @click="menuShow(true)"
-        >MENU</span
+        @click="nextPage(false)"
+        >PREV</span
       >
     </div>
     <v-expand-transition>
@@ -223,8 +223,12 @@ function hoverNext(num: number) {
   if (num === 0) animated.value = "";
 }
 
-function nextPage() {
-  router.push("/career1");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/career1");
+  } else {
+    router.push("/skill1");
+  }
 }
 
 const animated_menu = ref("");

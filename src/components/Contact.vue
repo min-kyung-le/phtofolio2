@@ -21,11 +21,21 @@
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
-      ><span
+      >
+      <span
         v-if="store.state.isMenuShow"
-        class="all-menu"
+        class="prev"
+        :class="animated_prev"
+        @mouseover="hoverPrev(1)"
+        @mouseout="hoverPrev(0)"
+        @click="nextPage(false)"
+        >PREV</span
+      >
+      <span
+        v-if="store.state.isMenuShow"
+        class="menu"
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
@@ -134,6 +144,7 @@ function nextAni() {
   let time = "<0.7";
   if (store.state.isMenuShow) {
     menuAni();
+    prevAni();
     time = "<0.2";
   }
   tl.from(
@@ -146,10 +157,20 @@ function nextAni() {
     time
   );
 }
-
+function prevAni() {
+  tl.from(
+    ".prev",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    "<0.2"
+  );
+}
 function menuAni() {
   tl.from(
-    ".all-menu",
+    ".menu",
     {
       opacity: 0,
       translateX: -50,
@@ -165,12 +186,23 @@ function hoverNext(num: number) {
   if (num === 0) animated.value = "";
 }
 
-function nextPage() {
-  router.push("/done");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/done");
+  } else {
+    router.push("/career2");
+  }
+}
+
+const animated_prev = ref("");
+
+function hoverPrev(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated_prev.value = animate_class;
+  if (num === 0) animated_prev.value = "";
 }
 
 const animated_menu = ref("");
-
 function hoverAllMenu(num: number) {
   const animate_class = "animate__animated animate__rubberBand";
   if (num === 1) animated_menu.value = animate_class;
@@ -194,5 +226,17 @@ function menuShow(isClick: boolean) {
 .center-box {
   width: 550px;
   margin: 0 auto 70px auto;
+}
+.prev {
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 130px;
+}
+.menu {
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 258px;
 }
 </style>

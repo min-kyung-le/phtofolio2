@@ -49,8 +49,17 @@
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
+      >
+      <span
+        v-if="store.state.isMenuShow"
+        class="all-menu"
+        :class="animated_menu"
+        @mouseover="hoverAllMenu(1)"
+        @mouseout="hoverAllMenu(0)"
+        @click="nextPage(false)"
+        >PREV</span
       >
     </div>
   </div>
@@ -60,6 +69,8 @@
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
+import { useStore } from "vuex";
+const store = useStore();
 
 const iconSize = "10px";
 const iconName = "mdi-circle";
@@ -152,6 +163,11 @@ function subContentAni() {
 const animated = ref("");
 
 function nextAni() {
+  let time = "<0.7";
+  if (store.state.isMenuShow) {
+    menuAni();
+    time = "<0.2";
+  }
   tl.from(
     ".next",
     {
@@ -159,8 +175,27 @@ function nextAni() {
       translateX: -50,
       duration: 0.5,
     },
-    ">"
+    time
   );
+}
+function menuAni() {
+  tl.from(
+    ".all-menu",
+    {
+      opacity: 0,
+      translateX: -50,
+      duration: 0.5,
+    },
+    "<0.5"
+  );
+}
+
+const animated_menu = ref("");
+
+function hoverAllMenu(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated_menu.value = animate_class;
+  if (num === 0) animated_menu.value = "";
 }
 
 function hoverNext(num: number) {
@@ -169,8 +204,12 @@ function hoverNext(num: number) {
   if (num === 0) animated.value = "";
 }
 
-function nextPage() {
-  router.push("/career2");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/career2");
+  } else {
+    router.push("/skill2");
+  }
 }
 </script>
 <style scoped></style>
