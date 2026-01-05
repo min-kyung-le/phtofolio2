@@ -1,27 +1,25 @@
 <template>
   <div class="page about">
     <div class="about-title">
-      <div class="title1">Chart</div>
+      <div class="title1">차트 활용 예시</div>
       <v-btn icon @click="close">
         <v-icon icon="mdi-close" />
       </v-btn>
+      <div class="detail">
+        단일 설비의 파라미터 데이터를 차트로 시각화한 화면의 예시로, 시간에 따른
+        변화 추이를 통해 설비 상태를 직관적으로 파악할 수 있도록 구성된
+        화면입니다.
+      </div>
     </div>
     <v-container fluid>
       <v-row>
-        <v-col cols="1" md="1"></v-col>
-        <v-col cols="10" md="10">
-          <v-card>
-            <v-card-title>Equipment Parameter Chart</v-card-title>
-
-            <v-card-text>
-              <apexchart
-                type="line"
-                height="420"
-                :options="chartOptions"
-                :series="chartSeries"
-              />
-            </v-card-text>
-          </v-card>
+        <v-col cols="12">
+          <apexchart
+            type="line"
+            height="420"
+            :options="chartOptions"
+            :series="chartSeries"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -208,12 +206,17 @@ function nextPage(value: boolean) {
   top: 0;
 }
 .page {
-  padding: 50px 40px 0 40px;
+  padding: 30px 40px 0 40px;
+  height: 80vh;
 }
 .about-title {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 30px 30px 0 30px;
+}
+.detail {
+  padding: 0 30px;
 }
 .about .about-title .title1 {
   font-size: 25px;

@@ -12,7 +12,7 @@
       <Grid @modelValue="modelClose"
     /></v-dialog>
     <v-dialog v-model="modalOpen.diagram" max-width="800">
-      <Diagram @modelValue="modelClose"
+      <Diagram :modalOpen="modalOpen.diagram" @modelValue="modelClose"
     /></v-dialog>
     <v-dialog v-model="modalOpen.chart" max-width="800">
       <Chart @modelValue="modelClose"

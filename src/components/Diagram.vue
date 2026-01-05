@@ -1,13 +1,24 @@
 <template>
   <div class="page about">
     <div class="about-title">
-      <div class="title1">Diagram</div>
+      <div class="title1">다이어그램 활용 예시</div>
       <v-btn icon @click="close">
         <v-icon icon="mdi-close" />
       </v-btn>
     </div>
-    <div class="detail">{{ comment }}</div>
-    <div ref="diagramDiv" style="width: 100%; height: 600px"></div>
+    <div class="detail">
+      단일 설비에 연결된 파라미터들을 GoJS 기반 구조도로 시각화한 화면의 예시로,
+      파라미터 상태에 따라 색상·아이콘·툴팁을 제공하고 사용자 인터랙션(선택,
+      드래그, 상태 유지)을 지원하는 구조도입니다
+    </div>
+    <v-container fluid>
+      <v-row>
+        <v-col cols="12"
+          ><div ref="diagramDiv" style="width: 100%; height: 600px"></div
+        ></v-col>
+      </v-row>
+    </v-container>
+
     <!-- <div class="sub-info-div">
       <span
         class="next"
@@ -38,7 +49,7 @@
 import Menu from "./Menu.vue";
 import DiagramDetail from "./DiagramDetail.vue";
 import * as go from "gojs";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
@@ -76,6 +87,10 @@ const onSelectParameter = (param: any) => {
   }, 150);
 };
 
+const modalOpen = defineProps<{
+  modalOpen: boolean;
+}>();
+
 onMounted(() => {
   titleAni(1);
   nextAni();
@@ -91,8 +106,21 @@ onMounted(() => {
         localStorage.setItem("equipmentDiagram", diagram.model.toJson());
       }
     },
+    // initialContentAlignment: go.Spot.Center,
+    // initialScale: 1,
   });
-
+  /*
+  watch(
+    () => modalOpen,
+    (open) => {
+      nextTick(() => {
+        if (open) {
+          diagram.zoomToFit();
+        }
+      });
+    }
+  );
+*/
   /** 설비 노드 */
   diagram.nodeTemplateMap.add(
     "EQUIPMENT",
@@ -194,9 +222,6 @@ onMounted(() => {
       );
 });
 
-const comment =
-  "단일 설비에 연결된 파라미터들을 GoJS 기반 구조도로 시각화한 화면으로, 파라미터 상태에 따라 색상·아이콘·툴팁을 제공하고 사용자 인터랙션(선택, 드래그, 상태 유지)을 지원하는 구조도";
-
 const tl = gsap.timeline();
 
 function nextAni() {
@@ -274,6 +299,10 @@ function nextPage(value: boolean) {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 30px 30px 0 30px;
+}
+.detail {
+  padding: 0 30px;
 }
 .about .about-title .title1 {
   font-size: 25px;
@@ -282,5 +311,8 @@ function nextPage(value: boolean) {
 }
 .v-overlay__content {
   top: unset;
+}
+.page {
+  height: 80vh;
 }
 </style>

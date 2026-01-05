@@ -1,25 +1,17 @@
 <template>
   <div class="page about">
     <div class="about-title">
-      <div class="title1">Grid</div>
+      <div class="title1">그리드 활용 예시</div>
       <v-btn icon @click="close">
         <v-icon icon="mdi-close" />
       </v-btn>
     </div>
+    <div class="detail">
+      복수 설비에 연결된 파라미터 값을 그리드 형태로 시각화한 화면의 예시로,
+      파라미터 상태 및 주요 데이터를 한눈에 확인할 수 있도록 구성된 조회
+      화면입니다.
+    </div>
     <v-container fluid>
-      <v-row>
-        <v-col cols="12">
-          <v-card flat>
-            <v-card-title class="text-h6">
-              Equipment Parameter Status
-            </v-card-title>
-            <v-card-subtitle>
-              설비에 연결된 파라미터 상태 및 값을 관리합니다.
-            </v-card-subtitle>
-          </v-card>
-        </v-col>
-      </v-row>
-
       <v-row>
         <v-col cols="12">
           <v-card>
@@ -83,6 +75,7 @@ import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import router from "@/router";
 import { useStore } from "vuex";
+import * as XLSX from "xlsx";
 
 const store = useStore();
 gsap.registerPlugin(TextPlugin);
@@ -178,12 +171,17 @@ function nextPage(value: boolean) {
 </script>
 <style scoped>
 .page {
-  padding: 50px 40px 0 40px;
+  padding: 30px 40px 0 40px;
+  height: 80vh;
 }
 .about-title {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 30px 30px 0 30px;
+}
+.detail {
+  padding: 0 30px;
 }
 .about .about-title .title1 {
   font-size: 25px;
