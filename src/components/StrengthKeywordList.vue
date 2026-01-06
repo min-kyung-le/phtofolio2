@@ -11,8 +11,8 @@
         class="keyword-item"
         :key="idx"
         @click="keywordItem(idx)"
-        @mouseenter="showTooltip('click!')"
-        @mouseleave="hideTooltip"
+        @mouseenter="showTooltip(true)"
+        @mouseleave="showTooltip(false)"
         @mousemove="moveTooltip"
       >
         <v-icon size="16">mdi-check</v-icon>
@@ -23,7 +23,7 @@
         class="follow-tooltip"
         :style="{ left: `${x}px`, top: `${y}px` }"
       >
-        {{ text }}
+        click!
       </div>
     </v-col>
   </v-row>
@@ -57,21 +57,16 @@ onMounted(() => {
 const visible = ref(false);
 const x = ref(0);
 const y = ref(0);
-const text = ref("");
 
-function showTooltip(message: string) {
-  text.value = message;
-  visible.value = true;
-}
-
-function hideTooltip() {
-  visible.value = false;
+function showTooltip(isShow: boolean) {
+  visible.value = isShow;
 }
 
 function moveTooltip(e: MouseEvent) {
   x.value = e.clientX + 12;
   y.value = e.clientY + 12;
 }
+
 function keywordItem(idx: number) {
   animation && animation.revert();
   animation = gsap.from(split[idx].chars, {

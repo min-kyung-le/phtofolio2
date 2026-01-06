@@ -4,6 +4,9 @@
     elevation="0"
     @mouseover="hoverKeywords(1)"
     @mouseout="hoverKeywords(0)"
+    @mouseenter="showTooltip(true)"
+    @mouseleave="showTooltip(false)"
+    @mousemove="moveTooltip"
   >
     <div class="card-line"></div>
 
@@ -12,21 +15,26 @@
     </v-icon>
     <h3 class="mb-2">
       {{ title }}
-      <span class="title-click" :class="animated_click"
-        >click!
-        <v-icon color="#aaa" size="15" class="click-icon"
-          >mdi-cursor-pointer</v-icon
-        ></span
-      >
     </h3>
 
     <div class="title-line" :class="animated"></div>
     <p>{{ description }}</p>
+    <div
+      v-if="visible"
+      class="follow-tooltip"
+      :style="{ left: `${x}px`, top: `${y}px` }"
+    >
+      click!
+    </div>
   </v-card>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+
+const visible = ref(false);
+const x = ref(0);
+const y = ref(0);
 
 defineProps<{
   title: string;
@@ -35,14 +43,19 @@ defineProps<{
 }>();
 
 const animated = ref("");
-const animated_click = ref("");
 
 function hoverKeywords(num: number) {
   const animate_class = "animate__animated animate__fadeInLeft";
   animated.value = num == 1 ? animate_class : "";
+}
 
-  const animate_click_class = "is_show animate__animated animate__pulse";
-  animated_click.value = num == 1 ? animate_click_class : "";
+function showTooltip(isShow: boolean) {
+  visible.value = isShow;
+}
+
+function moveTooltip(e: MouseEvent) {
+  x.value = e.clientX + 12;
+  y.value = e.clientY + 12;
 }
 </script>
 
@@ -52,10 +65,6 @@ function hoverKeywords(num: number) {
   border-radius: 14px;
   background-color: #0c0c0c;
   cursor: pointer;
-}
-.click-icon {
-  margin-top: -2px;
-  margin-left: 3px;
 }
 
 .title-line {
@@ -94,5 +103,17 @@ p {
   font-size: 14px;
   color: #eee;
   line-height: 1.6;
+}
+
+.follow-tooltip {
+  position: fixed;
+  z-index: 9999;
+  padding: 6px 10px;
+  background: rgba(240, 240, 240, 0.9);
+  color: rgb(34, 34, 34);
+  font-size: 12px;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: nowrap;
 }
 </style>
