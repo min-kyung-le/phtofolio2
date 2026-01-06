@@ -93,7 +93,7 @@ const modalOpen = defineProps<{
 
 onMounted(() => {
   titleAni(1);
-  nextAni();
+  //nextAni();
 
   if (!diagramDiv.value) return;
   const $ = go.GraphObject.make;

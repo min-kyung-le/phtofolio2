@@ -61,7 +61,7 @@ gsap.registerPlugin(TextPlugin);
 
 onMounted(() => {
   titleAni(1);
-  nextAni();
+  // nextAni();
 });
 
 const emit = defineEmits(["modelValue"]);
