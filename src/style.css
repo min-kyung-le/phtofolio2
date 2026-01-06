@@ -798,3 +798,26 @@ h1 {
     bottom: 15px;
   }
 }
+
+.strength-section {
+  padding: 40px 0 0 0 !important;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #777;
+  text-transform: uppercase;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

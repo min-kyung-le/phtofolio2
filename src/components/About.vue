@@ -1,23 +1,40 @@
 <template>
   <div class="page about">
-    <div class="about-title">
-      <div class="title1">{{ title1 }}</div>
-    </div>
-    <div class="detail">
-      <p v-for="one in summary" class="sumtxt">
-        {{ one.text }}
-      </p>
-    </div>
-    <v-dialog v-model="modalOpen.grid" max-width="800">
-      <Grid @modelValue="modelClose"
-    /></v-dialog>
-    <v-dialog v-model="modalOpen.diagram" max-width="800">
-      <Diagram :modalOpen="modalOpen.diagram" @modelValue="modelClose"
-    /></v-dialog>
-    <v-dialog v-model="modalOpen.chart" max-width="800">
-      <Chart @modelValue="modelClose"
-    /></v-dialog>
-    <div class="keywords">
+    <v-container class="strength-section">
+      <div class="section-header">
+        <span class="eyebrow">Core Strength</span>
+        <h2>핵심 강점</h2>
+      </div>
+      <v-row class="mt-8" dense>
+        <v-col cols="12" md="4" sm="6" @click="clickKeywords(keywords[0].link)">
+          <StrengthCard
+            title="설비 데이터 그리드 화면 구현"
+            description="복수 대의 설비의 파라미터 간 구조와 관계를 그리드화하고,
+          import 및 export 기능을 구현하여 사용자 경험을 높였습니다."
+            icon="mdi-table"
+          />
+        </v-col>
+        <v-col cols="12" md="4" sm="6" @click="clickKeywords(keywords[1].link)">
+          <StrengthCard
+            title="설비 구조도 UI 설계 경험"
+            description="단일 설비 기준으로 파라미터 간 구조와 관계를 시각화하여
+          설비에 띄워지는 여러 값들을 한눈에 보이도록 직관적으로 표현했습니다."
+            icon="mdi-sitemap"
+          />
+        </v-col>
+        <v-col cols="12" md="4" sm="6" @click="clickKeywords(keywords[2].link)"
+          ><StrengthCard
+            title="데이터 차트 화면 구현"
+            description="설비 한 대를 선택 후 단일 설비 파라미터 데이터를 차트로 구조화하여
+          상태 확인 및 추이를 한 화면에서 파악할 수 있도록 구현했습니다."
+            icon="mdi-chart-line"
+        /></v-col>
+      </v-row>
+
+      <!-- 키워드 영역 -->
+      <StrengthKeywordList class="mt-16" />
+    </v-container>
+    <!--<div class="keywords">
       <span
         class="key"
         :class="(keywords[0].link, animated_grid)"
@@ -42,14 +59,14 @@
         @click="clickKeywords(keywords[2].link)"
         >{{ keywords[2].text }}</span
       >
-    </div>
+    </div>-->
     <div class="sub-info-div">
       <span
         class="next"
         :class="animated"
         @mouseover="hoverNext(1)"
         @mouseout="hoverNext(0)"
-        @click="nextPage()"
+        @click="nextPage(true)"
         >NEXT</span
       >
       <span
@@ -58,10 +75,21 @@
         :class="animated_menu"
         @mouseover="hoverAllMenu(1)"
         @mouseout="hoverAllMenu(0)"
-        @click="menuShow(true)"
-        >MENU</span
+        @click="nextPage(false)"
+        >PREV</span
       >
     </div>
+
+    <v-dialog v-model="modalOpen.grid" max-width="800">
+      <Grid @modelValue="modelClose"
+    /></v-dialog>
+    <v-dialog v-model="modalOpen.diagram" max-width="800">
+      <Diagram :modalOpen="modalOpen.diagram" @modelValue="modelClose"
+    /></v-dialog>
+    <v-dialog v-model="modalOpen.chart" max-width="800">
+      <Chart @modelValue="modelClose"
+    /></v-dialog>
+
     <v-expand-transition>
       <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
     </v-expand-transition>
@@ -73,6 +101,8 @@ import Menu from "./Menu.vue";
 import Grid from "./Grid.vue";
 import Diagram from "./Diagram.vue";
 import Chart from "./Chart.vue";
+import StrengthCard from "./StrengthCard.vue";
+import StrengthKeywordList from "./StrengthKeywordList.vue";
 
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
@@ -81,19 +111,6 @@ import router from "@/router";
 import { useStore } from "vuex";
 const store = useStore();
 gsap.registerPlugin(TextPlugin);
-
-const summary = [
-  {
-    text: "삼성 IT자산 생애관리 시스템 개발(JS), 현대카드 마이데이터 대시보드 시스템 개발(Vue)",
-  },
-  {
-    text: "Javascript(ES6), Vue, Vuetify 등 Frontend 개발에 특화된 기술력, Gihub, Gitlab 실전 사용 경험으로 코드 형상 관리 시스템에 대한 깊은 이해",
-  },
-  { text: "Apexchart, Chart, Canvas, Gsap, Animation 등 라이브러리 스킬 능숙" },
-  {
-    text: "Java 8 이상, Spring Framwork, Spring Cloud, MySql 등에 관한 깊은 이해도 보유",
-  },
-];
 
 const keywords = [
   {
@@ -109,8 +126,6 @@ const keywords = [
     link: "chart",
   },
 ];
-
-const title1 = "87%";
 
 const tl = gsap.timeline();
 
@@ -185,7 +200,7 @@ const animated_diagram = ref("");
 const animated_chart = ref("");
 
 function hoverKeywords(num: number, key: String) {
-  let animate_class = "animate__animated animate__rubberBand";
+  let animate_class = "animate__animated animate__slideInLeft";
   if (key == "grid") {
     animated_grid.value = num == 1 ? animate_class : "";
   }
@@ -231,9 +246,12 @@ function hoverNext(num: number) {
   let animate_class = "animate__animated animate__rubberBand";
   animated.value = num == 1 ? animate_class : "";
 }
-
-function nextPage() {
-  router.push("/skill1");
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/skill1");
+  } else {
+    router.push("/");
+  }
 }
 </script>
 <style scoped>
