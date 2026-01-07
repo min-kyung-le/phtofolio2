@@ -125,7 +125,11 @@ async function handleText(event: MouseEvent, type: string) {
     }
     console.log("success");
   } catch (e) {
-    console.log("fail");
+    toast.error("error!", {
+      position: "bottom-center",
+      autoClose: 1000,
+    });
+    console.log("error : " + e);
   }
 }
 
