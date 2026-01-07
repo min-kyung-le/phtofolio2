@@ -60,6 +60,8 @@ import gsap from "gsap";
 import router from "@/router";
 import { useStore } from "vuex";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 const store = useStore();
 
 const tl = gsap.timeline();
@@ -116,6 +118,10 @@ async function handleText(event: MouseEvent, type: string) {
     if (type == "link") linkText(text);
     if (type == "copy") {
       await copyText(text);
+      toast.success("Copied!", {
+        position: "bottom-center",
+        autoClose: 1000,
+      });
     }
     console.log("success");
   } catch (e) {
