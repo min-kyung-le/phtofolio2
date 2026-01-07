@@ -821,3 +821,10 @@ h1 {
     transform: translateY(0);
   }
 }
+
+.menu,
+.all-menu,
+.prev,
+.next {
+  cursor: pointer;
+}
