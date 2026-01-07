@@ -8,6 +8,7 @@ import Skill1 from "./components/Skill1.vue";
 import Skill2 from "./components/Skill2.vue";
 import Career1 from "./components/Career1.vue";
 import Career2 from "./components/Career2.vue";
+import Career3 from "./components/Career3.vue";
 import CaptureImgs from "./components/CaptureImgs.vue";
 import Contact from "./components/Contact.vue";
 import Done from "./components/Done.vue";
@@ -89,6 +90,15 @@ const routes = [
     path: "/career2",
     name: "Career2",
     component: Career2,
+    meta: {
+      enterClass: "animate__animated animate__fadeIn",
+      leaveClass: "animate__animated animate__fadeOut",
+    },
+  },
+  {
+    path: "/career3",
+    name: "Career3",
+    component: Career3,
     meta: {
       enterClass: "animate__animated animate__fadeIn",
       leaveClass: "animate__animated animate__fadeOut",

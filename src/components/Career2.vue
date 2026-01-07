@@ -5,9 +5,7 @@
     </div>
     <div class="page-detail">
       <div class="career-name">
-        IT 자원관리 대시보드 시스템 개발<span class="title-small"
-          >(약 6개월)</span
-        >
+        IT 자원관리 대시보드 시스템 개발<span class="title-small">(6개월)</span>
       </div>
       <div class="line"></div>
       <div class="date-div">
@@ -261,7 +259,7 @@ function hoverNext(num: number) {
 
 function nextPage(value: boolean) {
   if (value) {
-    router.push("/contact");
+    router.push("/career3");
   } else {
     router.push("/career1");
   }

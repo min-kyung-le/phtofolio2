@@ -1,27 +1,24 @@
 <template>
-  <div class="page career career1">
+  <div class="page career">
     <div class="title-div">
       <div class="page-title title1">경력</div>
     </div>
     <div class="page-detail">
       <div class="career-name">
-        삼성 사내 GCS 2.0 시스템 운영 및 프론트엔드 기능 개발 담당<span
-          class="title-small"
-          >(2년)</span
-        >
+        IT 자원관리 시스템 개발<span class="title-small">(2년 4개월)</span>
       </div>
       <div class="line"></div>
       <div class="date-div">
-        <span class="date1">2024.01</span>
-        <span class="date2">2025.12</span>
+        <span class="date1">2018.11</span>
+        <span class="date2">2021.03</span>
       </div>
       <div class="project-div">
         <div class="left">
           <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
           >프로젝트 개요
           <div class="detail">
-            설비 구조도, 파라미터, 상태 정보를 다이어그램 및 그리드, 차트 등으로
-            시각화하여 모니터링하는 시스템
+            삼성 기흥 캠퍼스 사내의 IT자원(서버, 게이트웨이, VPI 등) 관리를 위한
+            관리자 시스템 개발 및 운영
           </div>
         </div>
         <div class="right">
@@ -29,28 +26,18 @@
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
             >기여한 점
             <div class="detail">
-              <p>Google Chart를 활용한 설비 데이터 시각화한 그리드 화면 구현</p>
-              <p>
-                사용자 편의성 향상을 위한 Excel 기반 데이터 Export / Upload 기능
-                추가
-              </p>
-              <p>
-                GoJS를 활용, 설비 구조도를 Visio 스타일의 다이어그램으로
-                시각화한 화면 개선
-              </p>
-              <p>
-                다이어그램을 활용한 화면에서 설비 상태값에 따라 노드색상 및
-                아이콘 표현방식을 설계하여 동적으로 변경되도록 구현, 상태 인지성
-                강화
-              </p>
+              <p>UI/UX 기능 구현</p>
+              <p>서버로 데이터 송출 시 데이터 검증</p>
+              <p>인터페이스에서의 데이터 비동기 처리</p>
+              <p>개발자 및 사용자 대상 트러블 슈팅 가이드 작성</p>
             </div>
           </div>
           <div>
             <V-icon :size="iconSize" class="icon">{{ iconName }}</V-icon
             >사용 툴 (언어, 기술)
             <div class="detail">
-              <p>Javascript(ES6), Vue, Java, Spring Boot, MyBatis, Oracle</p>
-              <p>Vuex, Git, GoJS, Google Chart, Docker</p>
+              <p>Javascript, JQuery, CanvasJS</p>
+              <p>Java 8, Spring Framwork, Oracle</p>
             </div>
           </div>
         </div>
@@ -75,19 +62,10 @@
         >PREV</span
       >
     </div>
-    <v-expand-transition>
-      <Menu v-if="menuShowValue" @closeMenu="menuShow(false)" />
-    </v-expand-transition>
-    <v-expand-transition>
-      <CaptureImgs v-if="isModal === 'true'" @isClose="captureClose" />
-    </v-expand-transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Menu from "./Menu.vue";
-import CaptureImgs from "./CaptureImgs.vue";
-
 import { ref, onMounted, reactive } from "vue";
 import gsap from "gsap";
 import router from "@/router";
@@ -102,21 +80,10 @@ const tl = gsap.timeline();
 onMounted(() => {
   titleAni(".title1");
   careerNameAni();
-  //lineAni();
+  // lineAni();
   subContentAni();
   nextAni();
-  chevronAni();
 });
-
-function chevronAni() {
-  tl.to(".chevron", {
-    translateX: -5,
-    translateY: -5,
-    duration: 0.4,
-    repeat: -1,
-    yoyo: true,
-  });
-}
 
 let time = "<0.2";
 function titleAni(name: string) {
@@ -193,27 +160,6 @@ function subContentAni() {
   );
 }
 
-const isClickAni = ref("");
-
-function captureTxt(num: number) {
-  const txt_ani_class = "animate__animated animate__rubberBand";
-  if (num === 1) {
-    isClickAni.value = txt_ani_class;
-  } else {
-    isClickAni.value = "";
-  }
-}
-
-const isModal = ref("false");
-
-function captureClick() {
-  isModal.value = "true";
-}
-
-function captureClose() {
-  isModal.value = "false";
-}
-
 const animated = ref("");
 
 function nextAni() {
@@ -244,20 +190,6 @@ function menuAni() {
   );
 }
 
-function hoverNext(num: number) {
-  const animate_class = "animate__animated animate__rubberBand";
-  if (num === 1) animated.value = animate_class;
-  if (num === 0) animated.value = "";
-}
-
-function nextPage(value: boolean) {
-  if (value) {
-    router.push("/career2");
-  } else {
-    router.push("/skill2");
-  }
-}
-
 const animated_menu = ref("");
 
 function hoverAllMenu(num: number) {
@@ -266,30 +198,18 @@ function hoverAllMenu(num: number) {
   if (num === 0) animated_menu.value = "";
 }
 
-const menuShowValue = ref(false);
-function menuShow(isClick: boolean) {
-  menuShowValue.value = isClick;
+function hoverNext(num: number) {
+  const animate_class = "animate__animated animate__rubberBand";
+  if (num === 1) animated.value = animate_class;
+  if (num === 0) animated.value = "";
+}
+
+function nextPage(value: boolean) {
+  if (value) {
+    router.push("/contact");
+  } else {
+    router.push("/career2");
+  }
 }
 </script>
-<style scoped>
-.click-line {
-  width: 120px;
-  height: 3px;
-  background-color: #000;
-  display: inline-block;
-  margin-top: 2px;
-}
-
-.btn-effect {
-  display: flex;
-  flex-direction: column;
-}
-
-.capture-btn {
-  cursor: pointer;
-}
-
-.career1 .project-div .right .detail {
-  width: 400px;
-}
-</style>
+<style scoped></style>

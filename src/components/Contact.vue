@@ -11,7 +11,9 @@
             height="27"
           />
           <span class="name">{{ one.name }}</span
-          ><span class="link">{{ one.link }}</span>
+          ><span class="link" @click="handleText($event, one.type)">{{
+            one.link
+          }}</span>
         </div>
       </div>
     </div>
@@ -51,7 +53,6 @@
 </template>
 
 <script lang="ts" setup>
-import HomeLayout_contact from "@/layout/HomeLayout_contact.vue";
 import Menu from "./Menu.vue";
 
 import { ref, onMounted, reactive } from "vue";
@@ -66,6 +67,7 @@ const tl = gsap.timeline();
 interface obj {
   img: string;
   name: string;
+  type: string;
   link: string;
 }
 
@@ -73,21 +75,25 @@ const list: Array<obj> = reactive([
   {
     img: "github.png",
     name: "github",
+    type: "link",
     link: "https://github.com/min-kyung-le",
   },
   {
     img: "naver.png",
     name: "naver blog",
+    type: "link",
     link: "https://blog.naver.com/clabyolo-_-p",
   },
   {
     img: "gmail.png",
     name: "gmail",
+    type: "copy",
     link: "minkyung1435@gmail.com",
   },
   {
     img: "telephone-call.png",
     name: "phone",
+    type: "copy",
     link: "010-7319-0067",
   },
 ]);
@@ -102,6 +108,28 @@ function onResize() {
       list[1].name = "blog";
       return;
   }
+}
+
+async function handleText(event: MouseEvent, type: string) {
+  const text = (event.target as HTMLElement).innerText;
+  try {
+    if (type == "link") linkText(text);
+    if (type == "copy") {
+      await copyText(text);
+    }
+    console.log("success");
+  } catch (e) {
+    console.log("fail");
+  }
+}
+
+function linkText(text: string) {
+  window.open(text, "_blank", "noopener,noreferrer");
+}
+
+function copyText(text: string): Promise<void> {
+  navigator.clipboard.writeText(text);
+  return Promise.resolve();
 }
 
 const animated = ref("");
@@ -238,5 +266,14 @@ function menuShow(isClick: boolean) {
   font-weight: 700;
   position: absolute;
   right: 258px;
+}
+.link {
+  cursor: pointer;
+  user-select: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
 </style>
